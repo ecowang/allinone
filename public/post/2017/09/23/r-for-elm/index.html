@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>使用R语言分析白榆生长数据 - 生态学习</title>
+    <meta property="og:title" content="使用R语言分析白榆生长数据 - 生态学习">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+      
+    
+
+    
+      
+      <meta property="description" content="使用白榆生长数据。指标分别有：品系号、生长地点、环境盐碱度（低中高三种）、树高、胸径、东西冠幅、南北冠幅，为2017年测定。
+在excel里整理数据，导出为csv格式，存在R工作目录下，进行操作。如果在windows下，使用read.csv 即可，但苹果中需要另外一种形式。
+[&amp;hellip;] 后来发现是自己忘了加引号了。。。
+[&amp;hellip;] all.data = &amp;hellip;">
+      <meta property="og:description" content="使用白榆生长数据。指标分别有：品系号、生长地点、环境盐碱度（低中高三种）、树高、胸径、东西冠幅、南北冠幅，为2017年测定。
+在excel里整理数据，导出为csv格式，存在R工作目录下，进行操作。如果在windows下，使用read.csv 即可，但苹果中需要另外一种形式。
+[&amp;hellip;] 后来发现是自己忘了加引号了。。。
+[&amp;hellip;] all.data = &amp;hellip;">
+      
+    
+
+    
+    
+
+    
+
+    
+    
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link rel="stylesheet" href="/css/custom.css" />
+
+  </head>
+
+  
+  <body class="post">
+    <header class="masthead">
+      <h1><a href="/">生态学习</a></h1>
+
+<p class="tagline">工作、学习、生活随记</p>
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" />
+  <label id="menu-label" for="menu-check" class="unselectable">
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="/">博客</a></li>
+  
+  <li><a href="/about/">关于我</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+<h1>使用R语言分析白榆生长数据</h1>
+
+<h3>王强
+  /  2017-09-23</h3>
+<hr>
+
+
+      </header>
+
+
+
+
+
+
+<div class="section level2">
+<h2>1. 数据初步整理</h2>
+<p>使用白榆生长数据。指标分别有：品系号、生长地点、环境盐碱度（低中高三种）、树高、胸径、东西冠幅、南北冠幅，为2017年测定。</p>
+<p>在excel里整理数据，导出为csv格式，存在R工作目录下，进行操作。如果在windows下，使用<strong>read.csv</strong> 即可，但苹果中需要另外一种形式。</p>
+<blockquote>
+<p>后来发现是自己忘了加引号了。。。</p>
+</blockquote>
+<pre class="r"><code>all.data = read.table(&quot;data for analysis/all.data.demo.txt&quot;, header = T, sep=&quot;\t&quot;, fileEncoding=&quot;UTF-16&quot;)
+head(all.data)</code></pre>
+<pre><code>##   X spe high dbh   ew   sn loca salt
+## 1 1  58 5.04 6.2 2.12 2.90 河口   低
+## 2 2  58 4.85 6.0 1.86 2.05 河口   低
+## 3 3  58 4.83 6.3 2.18 2.42 河口   低
+## 4 4  58 5.25 8.0 3.20 3.11 河口   低
+## 5 5  58 5.35 8.0 2.98 2.92 河口   低
+## 6 6  58 6.10 7.7 2.52 2.38 河口   低</code></pre>
+<pre class="r"><code># 然后把第一列去掉
+all.data = all.data[,-1]</code></pre>
+<p>需要注意的是数据的格式，要以数据库能够认识的格式保存数据，即标题占一行，每一个个体指标都是独立，如上面所示。在excel里操作要注意<strong>千万不要合并单元格</strong>，最好把数据整理成<strong>数据透视表能够识别的格式</strong>。</p>
+<blockquote>
+<p>对于excel中已经和并的数据，整理时有一个小技巧，假设列名是合并的：1、取消合并。2、选中列，<strong>F5定位</strong>。3、定位条件选空值。4、在第一个单元格里填写“=上一个单元格（地址）”。5、ctrl+enter。</p>
+</blockquote>
+<p>数据涉及沾化、河口、垦利三地的1790棵树。包括变量 spe, high, dbh, ew, sn, loca, salt。</p>
+<p>接下来分别整理并探索几个地方的数据的结构，按地方，按品系，按盐分梯度，不同角度都试试。</p>
+<pre class="r"><code>kenli = subset(all.data, loca == &quot;垦利&quot;)
+hekou = subset(all.data, loca == &quot;河口&quot;)
+zhanhua = subset(all.data, loca == &quot;沾化&quot;)
+# 把几个地方的数据分解出来 
+
+str(kenli)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    622 obs. of  7 variables:
+##  $ spe : int  58 58 58 58 58 58 58 58 58 58 ...
+##  $ high: num  7.6 7.5 7.3 7.5 7.4 7.5 7.1 7.1 7 7 ...
+##  $ dbh : num  10.2 8.7 8.7 9.7 9.2 9.4 8.9 8.65 7.21 8.38 ...
+##  $ ew  : num  3.98 3.19 3.29 3.8 3.5 3.47 3.87 4.13 3.12 4 ...
+##  $ sn  : num  4.5 3.71 3.49 3.63 3.8 3.56 3.96 3.99 3.66 3.55 ...
+##  $ loca: Factor w/ 3 levels &quot;垦利&quot;,&quot;河口&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ salt: Factor w/ 3 levels &quot;中&quot;,&quot;低&quot;,&quot;高&quot;: 2 2 2 2 2 2 2 2 2 2 ...</code></pre>
+<pre class="r"><code>str(hekou)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    1027 obs. of  7 variables:
+##  $ spe : int  58 58 58 58 58 58 58 58 58 58 ...
+##  $ high: num  5.04 4.85 4.83 5.25 5.35 6.1 5.7 5.03 4.85 4.95 ...
+##  $ dbh : num  6.2 6 6.3 8 8 7.7 8.3 7 5.4 5.4 ...
+##  $ ew  : num  2.12 1.86 2.18 3.2 2.98 2.52 2.93 2.3 2.25 2.74 ...
+##  $ sn  : num  2.9 2.05 2.42 3.11 2.92 2.38 3.18 2.17 1.28 2.03 ...
+##  $ loca: Factor w/ 3 levels &quot;垦利&quot;,&quot;河口&quot;,..: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ salt: Factor w/ 3 levels &quot;中&quot;,&quot;低&quot;,&quot;高&quot;: 2 2 2 2 2 2 2 2 1 1 ...</code></pre>
+<pre class="r"><code>str(zhanhua)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    141 obs. of  7 variables:
+##  $ spe : int  58 58 58 58 58 58 58 58 58 58 ...
+##  $ high: num  4.5 4.7 4.8 4.8 4.8 3.9 4.1 4.05 4.1 4.1 ...
+##  $ dbh : num  6.4 7.18 5.35 7.54 5.93 4.35 5.55 4.43 3.68 4.2 ...
+##  $ ew  : num  2.9 2.7 2.65 2.62 2.43 2.37 2.42 2.67 3.35 2.71 ...
+##  $ sn  : num  3 3.4 3 3.19 2.93 2.55 2.77 2.35 3.3 3.23 ...
+##  $ loca: Factor w/ 3 levels &quot;垦利&quot;,&quot;河口&quot;,..: 3 3 3 3 3 3 3 3 3 3 ...
+##  $ salt: Factor w/ 3 levels &quot;中&quot;,&quot;低&quot;,&quot;高&quot;: 3 3 3 3 3 3 3 3 3 3 ...</code></pre>
+</div>
+<div class="section level2">
+<h2>3 排序（主成分分析）</h2>
+<div class="section level3">
+<h3>3.1 第一次尝试</h3>
+<pre class="r"><code>library(vegan)</code></pre>
+<pre><code>## Loading required package: permute</code></pre>
+<pre><code>## Loading required package: lattice</code></pre>
+<pre><code>## This is vegan 2.5-5</code></pre>
+<pre class="r"><code>library(ggplot2)</code></pre>
+<pre><code>## Registered S3 methods overwritten by &#39;ggplot2&#39;:
+##   method         from 
+##   [.quosures     rlang
+##   c.quosures     rlang
+##   print.quosures rlang</code></pre>
+<pre class="r"><code>plot(rda(kenli[,c(2,3,4,5)]))</code></pre>
+<p><img src="/post/2017-09-23-r-for-Elm_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>可以发现，点太多，区分不开。所以使用平均值进行分析。</p>
+<p>这个过程可以在excel里完成，比较直观，也可以在R语言里完成。下面使用R语言。</p>
+</div>
+<div class="section level3">
+<h3>3.2 把数据按品种算出平均值</h3>
+<pre class="r"><code>library(dplyr) # 一个牛逼的包</code></pre>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<pre class="r"><code>hekou.spe = group_by(hekou, spe)
+hekou.mean = summarise(hekou.spe,
+          high = mean(high),
+          dbh = mean(dbh),
+          ew = mean(ew),
+          sn = mean(sn)
+          )
+head(hekou.mean)</code></pre>
+<pre><code>## # A tibble: 6 x 5
+##     spe  high   dbh    ew    sn
+##   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1     5  5.33  5.92  2.16  2.12
+## 2     7  5.25  6.19  2.21  2.14
+## 3    20  5.27  6.01  2.19  2.19
+## 4    30  5.37  6.54  2.44  2.30
+## 5    34  5.16  5.88  2.17  2.03
+## 6    41  5.23  5.94  2.09  2.09</code></pre>
+<pre class="r"><code># 以河口为例，先分组，再按分组计算，和excel里的数据透视表有点像。
+
+kenli.spe = group_by(kenli, spe)
+kenli.mean = summarise(kenli.spe,
+          high = mean(high),
+          dbh = mean(dbh),
+          ew = mean(ew),
+          sn = mean(sn)
+          )
+
+zhanhua.spe = group_by(zhanhua, spe)
+zhanhua.mean = summarise(zhanhua.spe,
+          high = mean(high),
+          dbh = mean(dbh),
+          ew = mean(ew),
+          sn = mean(sn)
+          )</code></pre>
+<p>有了这些分组的平均值，可以再次尝试做主成分分析。</p>
+</div>
+<div class="section level3">
+<h3>3.3 再次排序</h3>
+<pre class="r"><code>library(tidyverse) #这个包是个组合，里面包括dplyr,ggplot2等一系列包。</code></pre>
+<pre><code>## ── Attaching packages ────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
+<pre><code>## ✔ tibble  2.1.3     ✔ purrr   0.3.2
+## ✔ tidyr   0.8.3     ✔ stringr 1.4.0
+## ✔ readr   1.3.1     ✔ forcats 0.4.0</code></pre>
+<pre><code>## ── Conflicts ───────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>library(vegan)
+hekou.mean = as.data.frame(hekou.mean)
+hekou.mean = hekou.mean %&gt;% remove_rownames %&gt;% column_to_rownames(var=&quot;spe&quot;) 
+
+# %&gt;% 是管道函数的符号，意思就是这么干了再这么干，比如上面就是先去掉行名，再把spe这一列变成行名。
+# 如果直接做下面的函数，会有Warning message:
+# Setting row names on a tibble is deprecated. 所以先把几个数据变成数据框。以垦利为例，原本差异如下：
+
+kenli.mean</code></pre>
+<pre><code>## # A tibble: 12 x 5
+##      spe  high   dbh    ew    sn
+##    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+##  1     5  5.87  7.48  3.09  3.33
+##  2     7  5.81  7.28  3.00  3.15
+##  3    20  5.67  7.12  3.01  3.14
+##  4    30  5.89  7.66  3.11  3.08
+##  5    34  6.00  7.37  3.04  2.95
+##  6    41  6.01  7.41  3.07  3.06
+##  7    46  6.35  7.51  3.15  3.09
+##  8    50  5.90  7.50  3.16  3.29
+##  9    51  5.83  7.32  2.91  2.99
+## 10    58  6.05  7.48  3.10  3.07
+## 11   286  5.97  7.68  3.02  3.16
+## 12 65225  6.15  7.42  3.06  2.96</code></pre>
+<pre class="r"><code>as.data.frame(kenli.mean)</code></pre>
+<pre><code>##      spe     high      dbh       ew       sn
+## 1      5 5.874000 7.484400 3.094400 3.327600
+## 2      7 5.810000 7.280200 3.004600 3.150800
+## 3     20 5.666667 7.123333 3.011000 3.144000
+## 4     30 5.894444 7.659815 3.106111 3.076481
+## 5     34 6.004167 7.369375 3.039375 2.947917
+## 6     41 6.014118 7.411176 3.074314 3.057451
+## 7     46 6.350000 7.513196 3.145652 3.092609
+## 8     50 5.897959 7.499184 3.155306 3.294694
+## 9     51 5.830508 7.315763 2.906271 2.990847
+## 10    58 6.054000 7.484600 3.096000 3.069600
+## 11   286 5.971667 7.677667 3.017333 3.161417
+## 12 65225 6.153333 7.424222 3.060667 2.955778</code></pre>
+<pre class="r"><code># 接着把垦利和沾化的数据也弄好。
+
+kenli.mean = as.data.frame(kenli.mean)
+kenli.mean = kenli.mean %&gt;% remove_rownames %&gt;% column_to_rownames(var=&quot;spe&quot;)
+
+zhanhua.mean = as.data.frame(zhanhua.mean)
+zhanhua.mean = zhanhua.mean %&gt;% remove_rownames %&gt;% column_to_rownames(var=&quot;spe&quot;)</code></pre>
+<p>再做主成分分析。在vegan里，用rda函数。</p>
+<pre class="r"><code>hekou.rda = rda(hekou.mean)
+str(hekou.rda)</code></pre>
+<pre><code>## List of 10
+##  $ colsum        : Named num [1:4] 0.155 0.353 0.138 0.113
+##   ..- attr(*, &quot;names&quot;)= chr [1:4] &quot;high&quot; &quot;dbh&quot; &quot;ew&quot; &quot;sn&quot;
+##  $ tot.chi       : num 0.18
+##  $ Ybar          : num [1:12, 1:4] 0.01233 -0.01169 -0.00681 0.02357 -0.04023 ...
+##   ..- attr(*, &quot;scaled:center&quot;)= Named num [1:4] 5.29 6.12 2.21 2.15
+##   .. ..- attr(*, &quot;names&quot;)= chr [1:4] &quot;high&quot; &quot;dbh&quot; &quot;ew&quot; &quot;sn&quot;
+##   ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. ..$ : chr [1:12] &quot;5&quot; &quot;7&quot; &quot;20&quot; &quot;30&quot; ...
+##   .. ..$ : chr [1:4] &quot;high&quot; &quot;dbh&quot; &quot;ew&quot; &quot;sn&quot;
+##   ..- attr(*, &quot;METHOD&quot;)= chr &quot;PCA&quot;
+##  $ method        : chr &quot;rda&quot;
+##  $ call          : language rda(X = hekou.mean)
+##  $ pCCA          : NULL
+##  $ CCA           : NULL
+##  $ CA            :List of 7
+##   ..$ eig    : Named num [1:4] 0.166144 0.009104 0.004307 0.000869
+##   .. ..- attr(*, &quot;names&quot;)= chr [1:4] &quot;PC1&quot; &quot;PC2&quot; &quot;PC3&quot; &quot;PC4&quot;
+##   ..$ poseig : NULL
+##   ..$ u      : num [1:12, 1:4] 0.1387 -0.0307 0.0708 -0.3683 0.2186 ...
+##   .. ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. .. ..$ : chr [1:12] &quot;5&quot; &quot;7&quot; &quot;20&quot; &quot;30&quot; ...
+##   .. .. ..$ : chr [1:4] &quot;PC1&quot; &quot;PC2&quot; &quot;PC3&quot; &quot;PC4&quot;
+##   ..$ v      : num [1:4, 1:4] -0.318 -0.861 -0.312 -0.245 -0.888 ...
+##   .. ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. .. ..$ : chr [1:4] &quot;high&quot; &quot;dbh&quot; &quot;ew&quot; &quot;sn&quot;
+##   .. .. ..$ : chr [1:4] &quot;PC1&quot; &quot;PC2&quot; &quot;PC3&quot; &quot;PC4&quot;
+##   ..$ rank   : int 4
+##   ..$ tot.chi: num 0.18
+##   ..$ Xbar   : num [1:12, 1:4] 0.01233 -0.01169 -0.00681 0.02357 -0.04023 ...
+##   .. ..- attr(*, &quot;scaled:center&quot;)= Named num [1:4] 5.29 6.12 2.21 2.15
+##   .. .. ..- attr(*, &quot;names&quot;)= chr [1:4] &quot;high&quot; &quot;dbh&quot; &quot;ew&quot; &quot;sn&quot;
+##   .. ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. .. ..$ : chr [1:12] &quot;5&quot; &quot;7&quot; &quot;20&quot; &quot;30&quot; ...
+##   .. .. ..$ : chr [1:4] &quot;high&quot; &quot;dbh&quot; &quot;ew&quot; &quot;sn&quot;
+##   .. ..- attr(*, &quot;METHOD&quot;)= chr &quot;PCA&quot;
+##  $ inertia       : chr &quot;variance&quot;
+##  $ regularization: chr &quot;this is a vegan::rda result object&quot;
+##  - attr(*, &quot;class&quot;)= chr [1:2] &quot;rda&quot; &quot;cca&quot;</code></pre>
+<pre class="r"><code>plot(hekou.rda)</code></pre>
+<p><img src="/post/2017-09-23-r-for-Elm_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<pre class="r"><code># 把需要作图的数据提取出来，取个好名字出现在坐标轴上
+
+PC1 = hekou.rda$CA$u[,1]
+PC2 = hekou.rda$CA$u[,2]
+hekou.gg = as.data.frame(cbind(PC1, PC2))
+
+ggplot(hekou.gg, aes(PC1, PC2, label = row.names(hekou.gg))) + 
+  geom_point() + 
+  geom_text( vjust = &quot;inward&quot;, hjust = &quot;inward&quot;)</code></pre>
+<p><img src="/post/2017-09-23-r-for-Elm_files/figure-html/unnamed-chunk-6-2.png" width="672" /></p>
+<pre class="r"><code># 这个好看点，但不如vegan自带的作图容易说明问题。所以不用这个，仅作方法保存一下。
+# 注意ggplot的用法，若要不同颜色，则需要把颜色对应变量转化为character或factor，默认为数值型，为渐变颜色。</code></pre>
+<p>接下来，从不同角度作图，开始。</p>
+<pre class="r"><code>library(dplyr)
+kenli.low = filter(all.data, loca == &quot;垦利&quot;, salt == &quot;低&quot;)
+kenli.low.spe = group_by(kenli.low, spe)
+kenli.low.mean = summarise(kenli.low.spe,
+          high = mean(high),
+          dbh = mean(dbh),
+          ew = mean(ew),
+          sn = mean(sn)
+          )
+
+
+kenli.med = filter(all.data, loca == &quot;垦利&quot;, salt == &quot;中&quot;)
+kenli.med.spe = group_by(kenli.med, spe)
+kenli.med.mean = summarise(kenli.med.spe,
+          high = mean(high),
+          dbh = mean(dbh),
+          ew = mean(ew),
+          sn = mean(sn)
+          )
+
+kenli.high = filter(all.data, loca == &quot;垦利&quot;, salt == &quot;高&quot;)
+kenli.high.spe = group_by(kenli.high, spe)
+kenli.high.mean = summarise(kenli.high.spe,
+          high = mean(high),
+          dbh = mean(dbh),
+          ew = mean(ew),
+          sn = mean(sn)
+          )
+
+
+
+
+
+hekou.low = filter(all.data, loca == &quot;河口&quot;, salt == &quot;低&quot;)
+hekou.low.spe = group_by(hekou.low, spe)
+hekou.low.mean = summarise(hekou.low.spe,
+          high = mean(high),
+          dbh = mean(dbh),
+          ew = mean(ew),
+          sn = mean(sn)
+          )
+
+hekou.med = filter(all.data, loca == &quot;河口&quot;, salt == &quot;中&quot;)
+hekou.med.spe = group_by(hekou.med, spe)
+hekou.med.mean = summarise(hekou.med.spe,
+          high = mean(high),
+          dbh = mean(dbh),
+          ew = mean(ew),
+          sn = mean(sn)
+          )
+
+hekou.high = filter(all.data, loca == &quot;河口&quot;, salt == &quot;高&quot;)
+hekou.high.spe = group_by(hekou.high, spe)
+hekou.high.mean = summarise(hekou.high.spe,
+          high = mean(high),
+          dbh = mean(dbh),
+          ew = mean(ew),
+          sn = mean(sn)
+          )
+
+
+
+
+
+
+zhanhua.low = filter(all.data, loca == &quot;沾化&quot;, salt == &quot;低&quot;)
+zhanhua.low.spe = group_by(zhanhua.low, spe)
+zhanhua.low.mean = summarise(zhanhua.low.spe,
+          high = mean(high),
+          dbh = mean(dbh),
+          ew = mean(ew),
+          sn = mean(sn)
+          )
+
+zhanhua.med = filter(all.data, loca == &quot;沾化&quot;, salt == &quot;中&quot;)
+zhanhua.med.spe = group_by(zhanhua.med, spe)
+zhanhua.med.mean = summarise(zhanhua.med.spe,
+          high = mean(high),
+          dbh = mean(dbh),
+          ew = mean(ew),
+          sn = mean(sn)
+          )
+
+zhanhua.high = filter(all.data, loca == &quot;沾化&quot;, salt == &quot;高&quot;)
+zhanhua.high.spe = group_by(zhanhua.high, spe)
+zhanhua.high.mean = summarise(zhanhua.high.spe,
+          high = mean(high),
+          dbh = mean(dbh),
+          ew = mean(ew),
+          sn = mean(sn)
+          )
+
+
+kenli.low.mean = as.data.frame(kenli.low.mean)
+kenli.low.mean = kenli.low.mean %&gt;% remove_rownames %&gt;% column_to_rownames(var=&quot;spe&quot;)
+
+kenli.med.mean = as.data.frame(kenli.med.mean)
+kenli.med.mean = kenli.med.mean %&gt;% remove_rownames %&gt;% column_to_rownames(var=&quot;spe&quot;)
+
+kenli.high.mean = as.data.frame(kenli.high.mean)
+kenli.high.mean = kenli.high.mean %&gt;% remove_rownames %&gt;% column_to_rownames(var=&quot;spe&quot;)
+
+
+hekou.low.mean = as.data.frame(hekou.low.mean)
+hekou.low.mean = hekou.low.mean %&gt;% remove_rownames %&gt;% column_to_rownames(var=&quot;spe&quot;)
+
+hekou.med.mean = as.data.frame(hekou.med.mean)
+hekou.med.mean = hekou.med.mean %&gt;% remove_rownames %&gt;% column_to_rownames(var=&quot;spe&quot;)
+
+hekou.high.mean = as.data.frame(hekou.high.mean)
+hekou.high.mean = hekou.high.mean %&gt;% remove_rownames %&gt;% column_to_rownames(var=&quot;spe&quot;)
+
+zhanhua.low.mean = as.data.frame(zhanhua.low.mean)
+zhanhua.low.mean = zhanhua.low.mean %&gt;% remove_rownames %&gt;% column_to_rownames(var=&quot;spe&quot;)
+
+zhanhua.med.mean = as.data.frame(zhanhua.med.mean)
+zhanhua.med.mean = zhanhua.med.mean %&gt;% remove_rownames %&gt;% column_to_rownames(var=&quot;spe&quot;)
+
+zhanhua.high.mean = as.data.frame(zhanhua.high.mean)
+zhanhua.high.mean = zhanhua.high.mean %&gt;% remove_rownames %&gt;% column_to_rownames(var=&quot;spe&quot;)</code></pre>
+<p>作图了。</p>
+<pre class="r"><code>library(vegan)
+plot(rda(kenli.low.mean))</code></pre>
+<p><img src="/post/2017-09-23-r-for-Elm_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<pre class="r"><code># 垦利低盐分
+plot(rda(kenli.med.mean))</code></pre>
+<p><img src="/post/2017-09-23-r-for-Elm_files/figure-html/unnamed-chunk-8-2.png" width="672" /></p>
+<pre class="r"><code># 垦利中盐分
+plot(rda(kenli.high.mean))</code></pre>
+<p><img src="/post/2017-09-23-r-for-Elm_files/figure-html/unnamed-chunk-8-3.png" width="672" /></p>
+<pre class="r"><code># 垦利高盐分
+
+plot(rda(hekou.low.mean))</code></pre>
+<p><img src="/post/2017-09-23-r-for-Elm_files/figure-html/unnamed-chunk-8-4.png" width="672" /></p>
+<pre class="r"><code># 河口低盐分
+plot(rda(hekou.med.mean))</code></pre>
+<p><img src="/post/2017-09-23-r-for-Elm_files/figure-html/unnamed-chunk-8-5.png" width="672" /></p>
+<pre class="r"><code># 河口中盐分
+plot(rda(hekou.high.mean))</code></pre>
+<p><img src="/post/2017-09-23-r-for-Elm_files/figure-html/unnamed-chunk-8-6.png" width="672" /></p>
+<pre class="r"><code># 河口高盐分
+
+
+
+plot(rda(zhanhua.high.mean))</code></pre>
+<p><img src="/post/2017-09-23-r-for-Elm_files/figure-html/unnamed-chunk-8-7.png" width="672" /></p>
+<pre class="r"><code># 沾化高盐分</code></pre>
+</div>
+</div>
+<div class="section level2">
+<h2>4. 聚类分析</h2>
+<div class="section level3">
+<h3>4.1 聚类分析方法的选择</h3>
+<p>聚类分析，要先算出样本间距离来，这里直接用平均值。如何体现重复数据需要进一步研究，存疑。</p>
+<p>用的函数hclust，方法如下：</p>
+<ul>
+<li><p>1, 数据标准化：decostand(data, “normalize”)</p></li>
+<li><p>2, 计算欧式距离：vegdist(data, “euc”)，或者dist()</p></li>
+<li><p>3, 不同聚类方法</p></li>
+</ul>
+<p>3.1 Hierarchical Clustering Based on Links
+Single Linkage Agglomerative Clustering: hclust(distance, method = “single”)
+Complet Linkage Agglomerative Clustering: hclust(distance, method = “complete”)</p>
+<p>3.2 Average Agglomerative Clustering
+UPGMA best-known method: hclust(distance, method = “average”)
+还有其他几种average clustering: UPGMC“centroid”, WPGMA“mcquitty”, WPGMC“median”</p>
+<p>3.3 Ward’s Minimus Variance Clustering
+Based on the linear model criterion of least squares. method = “ward”</p>
+<ul>
+<li>4,解释聚类结果</li>
+</ul>
+<p>Cophenetic Correlation 表型相关，the distance where the two objects become<br />
+members of the same group.</p>
+<p>聚类的case是每一行的名称，如果是直接在excel里读取的话，存成csv格式，用read.csv(“testdata.csv”, row.names=1)读取，里面数据均参与计算相似系数矩阵。</p>
+<p>目前觉得single方法是最合适的，是最近相邻法聚类，能够较好的把不同类别的品种分为多类。</p>
+</div>
+<div class="section level3">
+<h3>4.2 聚类作图</h3>
+<pre class="r"><code>dis.kenli.high = vegdist(decostand(kenli.high.mean, &quot;normalize&quot;), &quot;euc&quot;)
+dis.kenli.med = vegdist(decostand(kenli.med.mean, &quot;normalize&quot;), &quot;euc&quot;)
+dis.kenli.low = vegdist(decostand(kenli.low.mean, &quot;normalize&quot;), &quot;euc&quot;)
+
+kenli.high.single = hclust(dis.kenli.high, method = &quot;single&quot;)
+kenli.med.single = hclust(dis.kenli.med, method = &quot;single&quot;)
+kenli.low.single = hclust(dis.kenli.low, method = &quot;single&quot;)
+
+plot(kenli.high.single)</code></pre>
+<p><img src="/post/2017-09-23-r-for-Elm_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<pre class="r"><code>plot(kenli.med.single)</code></pre>
+<p><img src="/post/2017-09-23-r-for-Elm_files/figure-html/unnamed-chunk-9-2.png" width="672" /></p>
+<pre class="r"><code>plot(kenli.low.single)</code></pre>
+<p><img src="/post/2017-09-23-r-for-Elm_files/figure-html/unnamed-chunk-9-3.png" width="672" /></p>
+</div>
+</div>
+<div class="section level2">
+<h2>5 小结</h2>
+<ul>
+<li>树高、胸径、冠幅有时候并不完全一致，使用PCA能从整体的角度找到优良品种；聚类可以直观把这些品种分成不同的团伙。</li>
+<li>数据整理过程中，对r语言不熟悉的话，不如用数据透视表快。</li>
+<li>以上分析为了试试用blogdown写博客并用hugo挂网上，检验图能出现，格式正确。</li>
+<li>真是太方便了，R分析，网站表达，直接打通了。</li>
+</ul>
+</div>
+
+
+  <footer>
+  
+<nav class="post-nav">
+  <span class="nav-prev">&larr; <a href="/post/2015/01/22/principal-response-curve-analysis/">使用主响应曲线方法（principal response curve analysis）分析刺槐数据</a></span>
+  <span class="nav-next"><a href="/post/2019/08/07/r-blogdown/">使用R语言的blogdown包建一个Hugo驱动博客站点</a> &rarr;</span>
+</nav>
+
+
+
+
+
+<script src="//yihui.name/js/math-code.js"></script>
+<script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script async src="//yihui.name/js/center-img.js"></script>
+
+  
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/tex.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+  
+  <hr>
+  <div class="copyright">&copy; <a href="https://ecology.wang">Wang Qiang</a> 2019 | <a href="https://github.com/ecowang">Github</a></div>
+  
+  </footer>
+  </article>
+  
+  </body>
+</html>
+

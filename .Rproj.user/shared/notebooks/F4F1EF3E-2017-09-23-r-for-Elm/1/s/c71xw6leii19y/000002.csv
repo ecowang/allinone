@@ -1,0 +1,2 @@
+"0","all.data = read.table(""data for analysis/all.data.demo.txt"", header = T, sep=""\t"", fileEncoding=""UTF-16"")"
+"0","head(all.data)"

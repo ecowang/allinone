@@ -1,0 +1,9 @@
+{
+    "path" : "~/all-in-one",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}

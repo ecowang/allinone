@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>使用R语言的blogdown包建一个Hugo驱动博客站点 - 生态学习</title>
+    <meta property="og:title" content="使用R语言的blogdown包建一个Hugo驱动博客站点 - 生态学习">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+      
+    
+
+    
+      
+      <meta property="description" content="记录使用blogdown，Github，netlify等材料，建立一个博客网站的过程。
+按环节分为三部分，
+[&amp;hellip;] 使用Rstudio，blogdown，在本地建立网站。
+[&amp;hellip;] 把网站丢到Github上，用Netlify生成网站。
+[&amp;hellip;] 配置网址。
+[&amp;hellip;] 这一步的目的，是把网站搭建出来，能在本地访问。
+要做的博客站点是静态网站，做出来就 &amp;hellip;">
+      <meta property="og:description" content="记录使用blogdown，Github，netlify等材料，建立一个博客网站的过程。
+按环节分为三部分，
+[&amp;hellip;] 使用Rstudio，blogdown，在本地建立网站。
+[&amp;hellip;] 把网站丢到Github上，用Netlify生成网站。
+[&amp;hellip;] 配置网址。
+[&amp;hellip;] 这一步的目的，是把网站搭建出来，能在本地访问。
+要做的博客站点是静态网站，做出来就 &amp;hellip;">
+      
+    
+
+    
+    
+
+    
+
+    
+    
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link rel="stylesheet" href="/css/custom.css" />
+
+  </head>
+
+  
+  <body class="post">
+    <header class="masthead">
+      <h1><a href="/">生态学习</a></h1>
+
+<p class="tagline">工作、学习、生活随记</p>
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" />
+  <label id="menu-label" for="menu-check" class="unselectable">
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="/">博客</a></li>
+  
+  <li><a href="/about/">关于我</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+<h1>使用R语言的blogdown包建一个Hugo驱动博客站点</h1>
+
+<h3>王强
+  /  2019-08-07</h3>
+<hr>
+
+
+      </header>
+
+
+
+
+
+
+<p>记录使用blogdown，Github，netlify等材料，建立一个博客网站的过程。</p>
+<p>按环节分为三部分，</p>
+<ol style="list-style-type: decimal">
+<li><p>使用Rstudio，blogdown，在本地建立网站。</p></li>
+<li><p>把网站丢到Github上，用Netlify生成网站。</p></li>
+<li><p>配置网址。</p></li>
+</ol>
+<div id="rstudioblogdown" class="section level2">
+<h2>1. 使用Rstudio，blogdown，在本地建立网站</h2>
+<p>这一步的目的，是把网站搭建出来，能在本地访问。</p>
+<p>要做的博客站点是静态网站，做出来就是若干文件夹，和文件，这一步使用<strong>R语言</strong>下的一个包——<a href="https://bookdown.org/yihui/blogdown/">blogdown</a>来实现。</p>
+<p>首先下载安装<a href="https://www.r-project.org/">R</a>和 <a href="https://www.rstudio.com/">Rstudio</a>，两个网站界面如下。</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-1"></span>
+<img src="/post/2019-08-07-r-blogdown_files/屏幕快照 2019-08-08 上午8.44.05.png" alt="R 官方网站" width="80%" />
+<p class="caption">
+Figure 1: R 官方网站
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
+<img src="/post/2019-08-07-r-blogdown_files/屏幕快照 2019-08-08 上午8.45.40.png" alt="Rstudio 官方网站" width="80%" />
+<p class="caption">
+Figure 2: Rstudio 官方网站
+</p>
+</div>
+<p>下载安装后，界面分别是这样的：</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
+<img src="/post/2019-08-07-r-blogdown_files/屏幕快照 2019-08-07 下午10.49.20.png" alt="R程序界面（装上Rstudio后这个就不用打开了）" width="80%" />
+<p class="caption">
+Figure 3: R程序界面（装上Rstudio后这个就不用打开了）
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
+<img src="/post/2019-08-07-r-blogdown_files/屏幕快照 2019-08-07 下午10.50.34.png" alt="Rstudio程序界面" width="80%" />
+<p class="caption">
+Figure 4: Rstudio程序界面
+</p>
+</div>
+<p>程序装上以后，安装blogdown包。</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
+<img src="/post/2019-08-07-r-blogdown_files/屏幕快照 2019-08-08 上午8.50.59.png" alt="可以在这里安装" width="80%" />
+<p class="caption">
+Figure 5: 可以在这里安装
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-6"></span>
+<img src="/post/2019-08-07-r-blogdown_files/屏幕快照 2019-08-08 上午8.52.01.png" alt="搜索需要的包，自动安装依赖包" width="80%" />
+<p class="caption">
+Figure 6: 搜索需要的包，自动安装依赖包
+</p>
+</div>
+<p>然后在<code>File-&gt;New Project</code>中，新建<code>Project</code>，选网站，过程如下。</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-7"></span>
+<img src="/post/2019-08-07-r-blogdown_files/xinjian project.png" alt="新建一个Project" width="80%" />
+<p class="caption">
+Figure 7: 新建一个Project
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-8"></span>
+<img src="/post/2019-08-07-r-blogdown_files/name a dictionary.png" alt="给网站所在文件夹命名" width="80%" />
+<p class="caption">
+Figure 8: 给网站所在文件夹命名
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-9"></span>
+<img src="/post/2019-08-07-r-blogdown_files/build a website.png" alt="新建一个网站" width="80%" />
+<p class="caption">
+Figure 9: 新建一个网站
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-10"></span>
+<img src="/post/2019-08-07-r-blogdown_files/name the website.png" alt="给网站命名" width="80%" />
+<p class="caption">
+Figure 10: 给网站命名
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-11"></span>
+<img src="/post/2019-08-07-r-blogdown_files/website building locally.png" alt="网站在本地（本电脑上）生成了" width="80%" />
+<p class="caption">
+Figure 11: 网站在本地（本电脑上）生成了
+</p>
+</div>
+<p>默认打开的是网站的配置文件，网站个人信息有些在这里修改。</p>
+<p>网站是生成在电脑上的一堆文件夹和文件，如下图所示。写的东西在<code>content</code>里的<code>post</code>里。</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-12"></span>
+<img src="/post/2019-08-07-r-blogdown_files/no more than some files and documents.png" alt="网站的全部文件" width="80%" />
+<p class="caption">
+Figure 12: 网站的全部文件
+</p>
+</div>
+<p>写日志可以在Rstudio里完成，<code>Addins</code>很有用。</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-13"></span>
+<img src="/post/2019-08-07-r-blogdown_files/useful addins.png" alt="常用的操作可以在Addins中找到" width="80%" />
+<p class="caption">
+Figure 13: 常用的操作可以在Addins中找到
+</p>
+</div>
+<p>点击上面的<code>Serve Site</code>，会发现右边出现了网站。</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-14"></span>
+<img src="/post/2019-08-07-r-blogdown_files/website done.png" alt="在Rstudio自带的Viewer中出现网站" width="80%" />
+<p class="caption">
+Figure 14: 在Rstudio自带的Viewer中出现网站
+</p>
+</div>
+<p>也可以在浏览器中查看本网站。</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-15"></span>
+<img src="/post/2019-08-07-r-blogdown_files/view in chrome.png" alt="在Chrome中查看网站" width="80%" />
+<p class="caption">
+Figure 15: 在Chrome中查看网站
+</p>
+</div>
+<p>编辑的博文源文件是这样的，需要对<a href="https://rmarkdown.rstudio.com/authoring_basics.html">rmarkdown</a>有一定了解。</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-16"></span>
+<img src="/post/2019-08-07-r-blogdown_files/how the working posts look like.png" alt="编辑的博文看起来的样子" width="80%" />
+<p class="caption">
+Figure 16: 编辑的博文看起来的样子
+</p>
+</div>
+<p>到这里，本地建设网站就完成了，非常简单，下载安装两个软件、几个包，然后基本一键生成。</p>
+<p>没有涉及样式的修改、网站信息的修改、完善等内容，仅仅按最简单的流程记录一遍。要把网站变成自己喜欢的，还需要找找合适的主题，然后修改相关设置、内容，此处不展开。</p>
+</div>
+<div id="githubnetlify" class="section level2">
+<h2>2. 把网站丢到github上，用Netlify生成网站</h2>
+<p>本地的网站只能本地浏览，要想让别人看必须放到网上，这一部分介绍如何把网站放到网上。大致是把图13的那些文件夹和文件，想办法放到<a href="https://github.com/">GitHub</a>网站上，然后在<a href="https://www.netlify.com/">Netlify</a>网站运行这些文件变成网站，并生成一个临时网址，下面是相关过程。</p>
+<p>首先要在GitHub上注册一个账户，然后新建一个repo（repository，仓库）。repo可以认为是个文件夹，可以把刚才生成的网站文件丢进去。</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-17"></span>
+<img src="/post/2019-08-07-r-blogdown_files/build a new repo on github.png" alt="在GitHub上新建一个空repo" width="80%" />
+<p class="caption">
+Figure 17: 在GitHub上新建一个空repo
+</p>
+</div>
+<p>然后要把刚才生成的网站本地文件夹纳入版本控制，然后才好推到GitHub上，实现本地和网络之间的同步。几个常用命令如下。</p>
+<table>
+<thead>
+<tr class="header">
+<th>命令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>$ git init</td>
+<td>把当前目录变成git可以管理的仓库</td>
+</tr>
+<tr class="even">
+<td>$ git add</td>
+<td>添加一个文件，也可以添加文件夹</td>
+</tr>
+<tr class="odd">
+<td>$ git add -A</td>
+<td>添加全部文件</td>
+</tr>
+<tr class="even">
+<td>$ git commit -m “some commit”</td>
+<td>提交修改</td>
+</tr>
+<tr class="odd">
+<td>$ git status</td>
+<td>查看是否还有未提交</td>
+</tr>
+<tr class="even">
+<td>$ git remote add origin +地址</td>
+<td>远程仓库的提交（第一次链接）</td>
+</tr>
+<tr class="odd">
+<td>$ git push -u origin master</td>
+<td>仓库关联</td>
+</tr>
+<tr class="even">
+<td>$ git push</td>
+<td>远程仓库的提交（第二次及之后）</td>
+</tr>
+</tbody>
+</table>
+<p>往这个repo丢（push）之前需要进行如下操作。</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-18"></span>
+<img src="/post/2019-08-07-r-blogdown_files/before push.png" alt="push之前要做的" width="80%" />
+<p class="caption">
+Figure 18: push之前要做的
+</p>
+</div>
+<p>下面是实际操作过程，注意输入Github用户名和密码的步骤。</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-19"></span>
+<img src="/post/2019-08-07-r-blogdown_files/the push steps.png" alt="push到GitHub的过程" width="80%" />
+<p class="caption">
+Figure 19: push到GitHub的过程
+</p>
+</div>
+<p>push到GitHub上以后，repo变成这样。</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-20"></span>
+<img src="/post/2019-08-07-r-blogdown_files/after push to github.png" alt="push到GitHub以后的repo" width="80%" />
+<p class="caption">
+Figure 20: push到GitHub以后的repo
+</p>
+</div>
+<p>然后登录Netlify，和Github的repo对接，编译网站并生成临时网址。</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-21"></span>
+<img src="/post/2019-08-07-r-blogdown_files/go to netlify.png" alt="用GitHub的账号登录Netlify" width="80%" />
+<p class="caption">
+Figure 21: 用GitHub的账号登录Netlify
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-22"></span>
+<img src="/post/2019-08-07-r-blogdown_files/link to your github repo.png" alt="链接GitHub上的repo" width="80%" />
+<p class="caption">
+Figure 22: 链接GitHub上的repo
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-23"></span>
+<img src="/post/2019-08-07-r-blogdown_files/almost done.png" alt="布置（生成）网站" width="80%" />
+<p class="caption">
+Figure 23: 布置（生成）网站
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-24"></span>
+<img src="/post/2019-08-07-r-blogdown_files/you are on line now.png" alt="网站上线" width="80%" />
+<p class="caption">
+Figure 24: 网站上线
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-25"></span>
+<img src="/post/2019-08-07-r-blogdown_files/view through chrome.png" alt="通过临时网址访问" width="80%" />
+<p class="caption">
+Figure 25: 通过临时网址访问
+</p>
+</div>
+<p>到这里，实现了网站上线。但Netlify给的临时网址没法用，还是要换成自己的网址。</p>
+</div>
+<div class="section level2">
+<h2>3. 配置网址</h2>
+<p>网址要买的，有很多域名提供商，咱也不知道哪个好，当年是在<a href="https://www.west.cn/">西部数码</a>买的，<code>ecology.wang</code>。</p>
+<p>这一部分的主要目标，是把自己的网址和Netlify临时网址对应起来。也就是说，要告诉网址提供商，我要把<code>ecology.wang</code>对应到Netlify临时网址，还要告诉Netlify，我要让你的临时网址对应<code>ecology.wang</code>。</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-26"></span>
+<img src="/post/2019-08-07-r-blogdown_files/go to your provider.png" alt="域名提供商" width="80%" />
+<p class="caption">
+Figure 26: 域名提供商
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-27"></span>
+<img src="/post/2019-08-07-r-blogdown_files/check the  Domain name.png" alt="能提供的功能很多，这里只买了个域名" width="80%" />
+<p class="caption">
+Figure 27: 能提供的功能很多，这里只买了个域名
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-28"></span>
+<img src="/post/2019-08-07-r-blogdown_files/connect the name to  netlify name.png" alt="告诉他，一访问你，就指向他" width="80%" />
+<p class="caption">
+Figure 28: 告诉他，一访问你，就指向他
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-29"></span>
+<img src="/post/2019-08-07-r-blogdown_files/connect to your real domain name.png" alt="跑回Netlify，告诉他，有个人来访问，你要欢迎" width="80%" />
+<p class="caption">
+Figure 29: 跑回Netlify，告诉他，有个人来访问，你要欢迎
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-30"></span>
+<img src="/post/2019-08-07-r-blogdown_files/just do it.png" alt="就是他，认识一下吧" width="80%" />
+<p class="caption">
+Figure 30: 就是他，认识一下吧
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-31"></span>
+<img src="/post/2019-08-07-r-blogdown_files/you can view through your domain name.png" alt="两边沟通好了，就可以通过自己的域名访问了" width="80%" />
+<p class="caption">
+Figure 31: 两边沟通好了，就可以通过自己的域名访问了
+</p>
+</div>
+<p>大体是这样，有很多概念没深入了解。这里有<a href="https://www.netlify.com/docs/redirects/?_ga=2.49149094.185831081.1565180403-799473455.1565180403">netlify关于域名配置的细节</a>，记一下，备查。</p>
+<p>这就是使用R语言的blogdown包建一个Hugo驱动博客站点的过程：本地建设、丢到GitHub上用Netlify生成、配置好域名，完工。</p>
+</div>
+
+
+  <footer>
+  
+<nav class="post-nav">
+  <span class="nav-prev">&larr; <a href="/post/2017/09/23/r-for-elm/">使用R语言分析白榆生长数据</a></span>
+  <span class="nav-next"></span>
+</nav>
+
+
+
+
+
+<script src="//yihui.name/js/math-code.js"></script>
+<script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script async src="//yihui.name/js/center-img.js"></script>
+
+  
+
+  
+  <hr>
+  <div class="copyright">&copy; <a href="https://ecology.wang">Wang Qiang</a> 2019 | <a href="https://github.com/ecowang">Github</a></div>
+  
+  </footer>
+  </article>
+  
+  </body>
+</html>
+
