@@ -263,56 +263,69 @@ Figure 17: 在GitHub上新建一个空repo
 </tr>
 </tbody>
 </table>
-<p>往这个repo丢（push）之前需要进行如下操作。</p>
+<p>往这个repo丢（push）之前需要进行如下操作，要注意提交修改。</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-18"></span>
-<img src="/post/2019-08-07-r-blogdown_files/before push.png" alt="push之前要做的" width="80%" />
+<img src="/post/2019-08-07-r-blogdown_files/before push.png" alt="大致的push环节" width="80%" />
 <p class="caption">
-Figure 18: push之前要做的
+Figure 18: 大致的push环节
 </p>
 </div>
-<p>下面是实际操作过程，注意输入Github用户名和密码的步骤。</p>
+<p>下面是几个实际操作过程，注意第一个图输入Github用户名和密码的步骤，第二、三个图配置repo的步骤。</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-19"></span>
-<img src="/post/2019-08-07-r-blogdown_files/the push steps.png" alt="push到GitHub的过程" width="80%" />
+<img src="/post/2019-08-07-r-blogdown_files/the push steps.png" alt="push到GitHub的过程，提前配置好repo了" width="80%" />
 <p class="caption">
-Figure 19: push到GitHub的过程
+Figure 19: push到GitHub的过程，提前配置好repo了
+</p>
+</div>
+<p>从头开始的话，是这样的，提交修改后（<code>git commit -m &quot;some commit&quot;</code>）才能push。</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-20"></span>
+<img src="/post/2019-08-07-r-blogdown_files/过程一.png" alt="提交修改" width="80%" />
+<p class="caption">
+Figure 20: 提交修改
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-21"></span>
+<img src="/post/2019-08-07-r-blogdown_files/过程二.png" alt="直接push显然不行，要add好对应的repo" width="80%" />
+<p class="caption">
+Figure 21: 直接push显然不行，要add好对应的repo
 </p>
 </div>
 <p>push到GitHub上以后，repo变成这样。</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-20"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-22"></span>
 <img src="/post/2019-08-07-r-blogdown_files/after push to github.png" alt="push到GitHub以后的repo" width="80%" />
 <p class="caption">
-Figure 20: push到GitHub以后的repo
+Figure 22: push到GitHub以后的repo
 </p>
 </div>
 <p>然后登录Netlify，和Github的repo对接，编译网站并生成临时网址。</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-21"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-23"></span>
 <img src="/post/2019-08-07-r-blogdown_files/go to netlify.png" alt="用GitHub的账号登录Netlify" width="80%" />
 <p class="caption">
-Figure 21: 用GitHub的账号登录Netlify
-</p>
-</div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-22"></span>
-<img src="/post/2019-08-07-r-blogdown_files/link to your github repo.png" alt="链接GitHub上的repo" width="80%" />
-<p class="caption">
-Figure 22: 链接GitHub上的repo
-</p>
-</div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-23"></span>
-<img src="/post/2019-08-07-r-blogdown_files/almost done.png" alt="布置（生成）网站" width="80%" />
-<p class="caption">
-Figure 23: 布置（生成）网站
+Figure 23: 用GitHub的账号登录Netlify
 </p>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-24"></span>
-<img src="/post/2019-08-07-r-blogdown_files/you are on line now.png" alt="网站上线" width="80%" />
+<img src="/post/2019-08-07-r-blogdown_files/link to your github repo.png" alt="链接GitHub上的repo" width="80%" />
 <p class="caption">
-Figure 24: 网站上线
+Figure 24: 链接GitHub上的repo
 </p>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-25"></span>
+<img src="/post/2019-08-07-r-blogdown_files/almost done.png" alt="布置（生成）网站" width="80%" />
+<p class="caption">
+Figure 25: 布置（生成）网站
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-26"></span>
+<img src="/post/2019-08-07-r-blogdown_files/you are on line now.png" alt="网站上线" width="80%" />
+<p class="caption">
+Figure 26: 网站上线
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-27"></span>
 <img src="/post/2019-08-07-r-blogdown_files/view through chrome.png" alt="通过临时网址访问" width="80%" />
 <p class="caption">
-Figure 25: 通过临时网址访问
+Figure 27: 通过临时网址访问
 </p>
 </div>
 <p>到这里，实现了网站上线。但Netlify给的临时网址没法用，还是要换成自己的网址。</p>
@@ -321,40 +334,40 @@ Figure 25: 通过临时网址访问
 <h2>3. 配置网址</h2>
 <p>网址要买的，有很多域名提供商，咱也不知道哪个好，当年是在<a href="https://www.west.cn/">西部数码</a>买的，<code>ecology.wang</code>。</p>
 <p>这一部分的主要目标，是把自己的网址和Netlify临时网址对应起来。也就是说，要告诉网址提供商，我要把<code>ecology.wang</code>对应到Netlify临时网址，还要告诉Netlify，我要让你的临时网址对应<code>ecology.wang</code>。</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-26"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-28"></span>
 <img src="/post/2019-08-07-r-blogdown_files/go to your provider.png" alt="域名提供商" width="80%" />
 <p class="caption">
-Figure 26: 域名提供商
-</p>
-</div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-27"></span>
-<img src="/post/2019-08-07-r-blogdown_files/check the  Domain name.png" alt="能提供的功能很多，这里只买了个域名" width="80%" />
-<p class="caption">
-Figure 27: 能提供的功能很多，这里只买了个域名
-</p>
-</div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-28"></span>
-<img src="/post/2019-08-07-r-blogdown_files/connect the name to  netlify name.png" alt="告诉他，一访问你，就指向他" width="80%" />
-<p class="caption">
-Figure 28: 告诉他，一访问你，就指向他
+Figure 28: 域名提供商
 </p>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-29"></span>
-<img src="/post/2019-08-07-r-blogdown_files/connect to your real domain name.png" alt="跑回Netlify，告诉他，有个人来访问，你要欢迎" width="80%" />
+<img src="/post/2019-08-07-r-blogdown_files/check the  Domain name.png" alt="能提供的功能很多，这里只买了个域名" width="80%" />
 <p class="caption">
-Figure 29: 跑回Netlify，告诉他，有个人来访问，你要欢迎
+Figure 29: 能提供的功能很多，这里只买了个域名
 </p>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-30"></span>
-<img src="/post/2019-08-07-r-blogdown_files/just do it.png" alt="就是他，认识一下吧" width="80%" />
+<img src="/post/2019-08-07-r-blogdown_files/connect the name to  netlify name.png" alt="告诉他，一访问你，就指向他" width="80%" />
 <p class="caption">
-Figure 30: 就是他，认识一下吧
+Figure 30: 告诉他，一访问你，就指向他
 </p>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-31"></span>
+<img src="/post/2019-08-07-r-blogdown_files/connect to your real domain name.png" alt="跑回Netlify，告诉他，有个人来访问，你要欢迎" width="80%" />
+<p class="caption">
+Figure 31: 跑回Netlify，告诉他，有个人来访问，你要欢迎
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-32"></span>
+<img src="/post/2019-08-07-r-blogdown_files/just do it.png" alt="就是他，认识一下吧" width="80%" />
+<p class="caption">
+Figure 32: 就是他，认识一下吧
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-33"></span>
 <img src="/post/2019-08-07-r-blogdown_files/you can view through your domain name.png" alt="两边沟通好了，就可以通过自己的域名访问了" width="80%" />
 <p class="caption">
-Figure 31: 两边沟通好了，就可以通过自己的域名访问了
+Figure 33: 两边沟通好了，就可以通过自己的域名访问了
 </p>
 </div>
 <p>大体是这样，有很多概念没深入了解。这里有<a href="https://www.netlify.com/docs/redirects/?_ga=2.49149094.185831081.1565180403-799473455.1565180403">netlify关于域名配置的细节</a>，记一下，备查。</p>

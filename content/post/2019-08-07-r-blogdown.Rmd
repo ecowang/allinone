@@ -142,17 +142,28 @@ $ git remote add origin +地址|远程仓库的提交（第一次链接）
 $ git push -u origin master |仓库关联
 $ git push    | 远程仓库的提交（第二次及之后）
 
-往这个repo丢（push）之前需要进行如下操作。
+往这个repo丢（push）之前需要进行如下操作，要注意提交修改。
 
-```{r , fig.cap='push之前要做的', fig.align='center', out.width='80%', echo=FALSE}
+```{r , fig.cap='大致的push环节', fig.align='center', out.width='80%', echo=FALSE}
 knitr::include_graphics("/post/2019-08-07-r-blogdown_files/before push.png")
 ```
 
-下面是实际操作过程，注意输入Github用户名和密码的步骤。
+下面是几个实际操作过程，注意第一个图输入Github用户名和密码的步骤，第二、三个图配置repo的步骤。
 
-```{r , fig.cap='push到GitHub的过程', fig.align='center', out.width='80%', echo=FALSE}
+```{r , fig.cap='push到GitHub的过程，提前配置好repo了', fig.align='center', out.width='80%', echo=FALSE}
 knitr::include_graphics("/post/2019-08-07-r-blogdown_files/the push steps.png")
 ```
+
+从头开始的话，是这样的，提交修改后（`git commit -m "some commit"`）才能push。
+
+```{r , fig.cap='提交修改', fig.align='center', out.width='80%', echo=FALSE}
+knitr::include_graphics("/post/2019-08-07-r-blogdown_files/过程一.png")
+```
+
+```{r , fig.cap='直接push显然不行，要add好对应的repo', fig.align='center', out.width='80%', echo=FALSE}
+knitr::include_graphics("/post/2019-08-07-r-blogdown_files/过程二.png")
+```
+
 
 push到GitHub上以后，repo变成这样。
 
