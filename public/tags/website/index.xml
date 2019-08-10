@@ -6,10 +6,30 @@
     <description>Recent content in website on 生态学习</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 07 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 10 Aug 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/website/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>bookdown一个小问题和解决过程</title>
+      <link>/post/2019/08/10/bookdown-explorer/</link>
+      <pubDate>Sat, 10 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2019/08/10/bookdown-explorer/</guid>
+      <description>想按bookdown把一些记录做成书的样子。
+按最简单能实现的途径，先下载bookdown的demo，修改成自己的内容，本地serve没有问题。
+按JD Long（这好像是个大神）的自动在Netlify发布书的介绍，把书push到Github上，关联Netlify——失败。
+原因是没有把一个文件夹_book推上去。为什么会把这个文件夹忽略呢？百思不得其解，今天终于发现，是谢益辉做这个包的时候把_book文件夹纳入git忽略名单了。是在隐藏文件.gitignore中定义的，只要在里面把这个文件夹去掉就行了。
+另外，Mac中显示和隐藏隐藏文件的方法如下：
+显示（在终端输入）： &amp;gt; defaults write com.apple.finder AppleShowAllFiles -bool true
+关闭显示：
+ defaults write com.apple.finder AppleShowAllFiles -bool false
+ 命令运行之后需要重新加载Finder，快捷键：
+ option+command+esc
+ 选中Finder，重新启动即可。
+虽然是个小问题，不过因为基础知识太少还是费了不少劲才发现解决方法，记录一下。</description>
+    </item>
     
     <item>
       <title>使用R语言的blogdown包建一个Hugo驱动博客站点</title>
@@ -29,6 +49,22 @@
  Figure 3: R程序界面（装上Rstudio后这个就不用打开了）   Figure 4: Rstudio程序界面  程序装上以后，安装blogdown包。
  Figure 5: 可以在这里安装   Figure 6: 搜索需要的包，自动安装依赖包  然后在File-&amp;gt;New Project中，新建Project，选网站，过程如下。
  Figure 7: 新建一个Project   Figure 8: 给网站所在文件夹命名   Figure 9: 新建一个网站   Figure 10: 给网站命名   Figure 11: 网站在本地（本电脑上）生成了  默认打开的是网站的配置文件，网站个人信息有些在这里修改。</description>
+    </item>
+    
+    <item>
+      <title>如何使用jekyll建设一个网站</title>
+      <link>/post/2016/08/27/jekyll-website/</link>
+      <pubDate>Sat, 27 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2016/08/27/jekyll-website/</guid>
+      <description>一、可能感兴趣的人  没有多少专业知识，对电脑的了解仅限于正常办公、下载电影、知道几个dos命令。 有记录、整理、提升自己的需求。 认同接下来的时代是信息时代，不在网上的东西趋近于不存在。 感受到一些大型博客网站的不自由，不顺手。 想做自己的博客，又不想在搭建上费太多劲。  如果是这样，你和我有一样的需求，接下来这些记录估计会有用。
+本文还没写完，随时更新。 哦，没更新了，改用blogdown维护……囧
+二、几个概念 概念是厘清过程的基石，这些概念都是需要了解的，知道了这些，才知道自己每一步是在做什么。以下概念不一定很准，但相当通俗，因为我就是这么理解的，有错误的话欢迎提出来随时修改。
+1、github github是一个托管开源程序的网站，各种语言都可以。各种程序以repository的形式放在其服务器上，简称repo。下面说的ruby、jekyll和各种theme都可以放在上面。github通过git系统来进行版本控制。 github是个网站也是个远程硬盘，可以把代码图片等等放上去，大家合作做一些东西，方式就是git。
+想要熟悉github，首先要注册一个用户，然后fork几个repo，就在网页上多点点改改，看看有什么反应，泡的时间够了，对那些概念就会有一个初步的认识，起码就知道上面这句话是啥意思了。
+2、git git是一个版本控制系统。表现形式是一个命令行界面，在windows下需要下载一个新的命令行界面不能用系统自带的cmd，而是用安装后的gitbash。这个看着和cmd差不多都是黑乎乎的，但前面有个$符号，原因是不同的shell。shell是相对core的，是系统外层的壳，如果core是中央政府，shell就相当于职能部门，完成特定工作。部门是分锅吃饭的，shell也有不同种类，要用git的话，必须用gitbash，是bash的shell，linux一脉相承下来的。 其实用git最好再linux上用，苹果也行（好像苹果也是基于linux还是unix开发的？），在windows上需要设置的东西相对更多。
+git 六脉神剑(目前就用过这几个囧)
+   命令 使用及作用     git init 初始化一个repo，代表git对这个文件夹的变化开始全面掌控了，会有一个隐藏文件夹作为总控室。   git add . 这个文件夹里所有的变化，都报告给git总控室。   git commit -m &amp;ldquo;some changes&amp;rdquo; 总控室把所有的变化都批准了进行提交，建立一个时间节点，并对这些变化有个标注。   git checkout gh-pages 新建一个分支，这里用gh-pages做例子，因为要做博客，必须建一个这样的分支，这样gitpage这个网站才能从github的repo里生成网页。   git push 我们在电脑上的变化，比如我用记事本写了一个博客，要放到github上去，不需要像邮件一样上传，在gitbash或者别的命令行界面中推送就行了。   git pull 上一个动作的反向动作。如果我在网站上有变化，或者从其他电脑推送变化了，在另一台电脑上，可以把这些变化更新到本地，把变化拉过来。    3、ruby ruby其实是一种语言。语言也是需要安装的。在window里要下载，安装后会有一个新的命令界面，叫start command promot with ruby，这大概是把ruby和window自带的命令提示符结合了，没有$符号。装ruby的目的，是安装和应用jekyll。</description>
     </item>
     
   </channel>

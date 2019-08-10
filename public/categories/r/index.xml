@@ -6,10 +6,30 @@
     <description>Recent content in R on 生态学习</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 07 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 10 Aug 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>bookdown一个小问题和解决过程</title>
+      <link>/post/2019/08/10/bookdown-explorer/</link>
+      <pubDate>Sat, 10 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2019/08/10/bookdown-explorer/</guid>
+      <description>想按bookdown把一些记录做成书的样子。
+按最简单能实现的途径，先下载bookdown的demo，修改成自己的内容，本地serve没有问题。
+按JD Long（这好像是个大神）的自动在Netlify发布书的介绍，把书push到Github上，关联Netlify——失败。
+原因是没有把一个文件夹_book推上去。为什么会把这个文件夹忽略呢？百思不得其解，今天终于发现，是谢益辉做这个包的时候把_book文件夹纳入git忽略名单了。是在隐藏文件.gitignore中定义的，只要在里面把这个文件夹去掉就行了。
+另外，Mac中显示和隐藏隐藏文件的方法如下：
+显示（在终端输入）： &amp;gt; defaults write com.apple.finder AppleShowAllFiles -bool true
+关闭显示：
+ defaults write com.apple.finder AppleShowAllFiles -bool false
+ 命令运行之后需要重新加载Finder，快捷键：
+ option+command+esc
+ 选中Finder，重新启动即可。
+虽然是个小问题，不过因为基础知识太少还是费了不少劲才发现解决方法，记录一下。</description>
+    </item>
     
     <item>
       <title>使用R语言的blogdown包建一个Hugo驱动博客站点</title>
