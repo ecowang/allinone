@@ -1,6 +1,6 @@
 ---
 title: 使用R语言分析白榆生长数据
-author: 王强
+author: 老王
 date: '2017-09-23'
 slug: r-for-Elm
 categories:

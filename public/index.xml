@@ -6,10 +6,22 @@
     <description>Recent content in Home on 生态学习</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 10 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 12 Aug 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>在blogdown/bookdown作品中引用参考文献</title>
+      <link>/post/2019/08/12/blogdown-reference/</link>
+      <pubDate>Mon, 12 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2019/08/12/blogdown-reference/</guid>
+      <description>本文记录如何在blogdown或bookdown作品中添加参考文献。参考了bookdown的官方文献 (谢益辉 2019)。Rstudio也有参考。
+具体做法：
+准备好参考文献文件。此处从zotero中把参考文献导出来，生成.bib 文件，这里命名为reference.bib。并放到 content\post\文件夹.  Figure 1: 从zotero中导出bib文件  在博客源文档 .Rmd 文档的 yml 头里声明 .bib 文件的名称。注意：md文件不行，只能在Rmd中使用。  Figure 2: yml头信息示例  在文章中引用 .bib 里的文献条目，例如 [@R-base]显示为：(R Core Team 2016)，没括号的@R-base显示为 R Core Team (2016)。但中文的显示似乎有点问题，[@_ranimation_2019]成了(王, 常, and 孙 2019)。  Figure 3: bib文件里面的内容，就是一个文本文件  运行，在参考文献列表在底部出现。  还有两点：
+ 在blog中文献没有超链接，在book里是有的。大概谢益辉觉得博客不会很长，加超链接没必要。 可以有多个bib文件，使用的话在yml头里声明即可，如：bibliography: [book.bib, packages.bib]。  R Core Team. 2016. R: A Language and Environment for Statistical Computing. Vienna, Austria: R Foundation for Statistical Computing.</description>
+    </item>
     
     <item>
       <title>bookdown一个小问题和解决过程</title>

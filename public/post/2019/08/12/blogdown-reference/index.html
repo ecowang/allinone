@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>在blogdown/bookdown作品中引用参考文献 - 生态学习</title>
+    <meta property="og:title" content="在blogdown/bookdown作品中引用参考文献 - 生态学习">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+      
+    
+
+    
+      
+      <meta property="description" content="本文记录如何在blogdown或bookdown作品中添加参考文献。参考了bookdown的官方文献 (谢益辉 2019)。Rstudio也有参考。
+具体做法：
+[&amp;hellip;] Figure 1: 从zotero中导出bib文件 [&amp;hellip;] Figure 2: yml头信息示例 [&amp;hellip;] Figure 3: bib文件里面的内容，就是一个文本文件 [&amp;hellip;]  &amp;hellip;">
+      <meta property="og:description" content="本文记录如何在blogdown或bookdown作品中添加参考文献。参考了bookdown的官方文献 (谢益辉 2019)。Rstudio也有参考。
+具体做法：
+[&amp;hellip;] Figure 1: 从zotero中导出bib文件 [&amp;hellip;] Figure 2: yml头信息示例 [&amp;hellip;] Figure 3: bib文件里面的内容，就是一个文本文件 [&amp;hellip;]  &amp;hellip;">
+      
+    
+
+    
+    
+
+    
+
+    
+    
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link rel="stylesheet" href="/css/custom.css" />
+
+  </head>
+
+  
+  <body class="post">
+    <header class="masthead">
+      <h1><a href="/">生态学习</a></h1>
+
+<p class="tagline">工作、学习、生活随记</p>
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" />
+  <label id="menu-label" for="menu-check" class="unselectable">
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="/">博客</a></li>
+  
+  <li><a href="/about/">关于我</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+<h1>在blogdown/bookdown作品中引用参考文献</h1>
+
+<h3>老王
+  /  2019-08-12</h3>
+<hr>
+
+
+      </header>
+
+
+
+
+
+
+<p>本文记录如何在blogdown或bookdown作品中添加参考文献。参考了bookdown的官方文献 <span class="citation">(谢益辉 2019)</span>。Rstudio也有<a href="https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html">参考</a>。</p>
+<p>具体做法：</p>
+<ol style="list-style-type: decimal">
+<li>准备好参考文献文件。此处从<a href="https://www.zotero.org/">zotero</a>中把参考文献导出来，生成.bib 文件，这里命名为reference.bib。<strong>并放到 <code>content\post\</code>文件夹</strong>.
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-1"></span>
+<img src="/post/2019-08-12-bookdown-reference_files/exporting from zotero.png" alt="从zotero中导出bib文件" width="60%" />
+<p class="caption">
+Figure 1: 从zotero中导出bib文件
+</p>
+</div></li>
+<li>在博客源文档 .Rmd 文档的 yml 头里声明 .bib 文件的名称。注意：md文件不行，只能在Rmd中使用。
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
+<img src="/post/2019-08-12-blogdown-reference_files/屏幕快照 2019-08-12 下午7.15.11.png" alt="yml头信息示例" width="80%" />
+<p class="caption">
+Figure 2: yml头信息示例
+</p>
+</div></li>
+<li>在文章中引用 .bib 里的文献条目，例如 <code>[@R-base]</code>显示为：<span class="citation">(R Core Team 2016)</span>，没括号的<code>@R-base</code>显示为 <span class="citation">R Core Team (2016)</span>。但中文的显示似乎有点问题，<code>[@_ranimation_2019]</code>成了<span class="citation">(王, 常, and 孙 2019)</span>。
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
+<img src="/post/2019-08-12-blogdown-reference_files/屏幕快照 2019-08-12 下午7.07.52.png" alt="bib文件里面的内容，就是一个文本文件" width="90%" />
+<p class="caption">
+Figure 3: bib文件里面的内容，就是一个文本文件
+</p>
+</div></li>
+<li>运行，在参考文献列表在底部出现。</li>
+</ol>
+<p>还有两点：</p>
+<ul>
+<li>在blog中文献没有超链接，在book里是有的。大概谢益辉觉得博客不会很长，加超链接没必要。</li>
+<li>可以有多个bib文件，使用的话在yml头里声明即可，如：<code>bibliography: [book.bib, packages.bib]</code>。</li>
+</ul>
+<div id="refs" class="references">
+<div id="ref-R-base">
+<p>R Core Team. 2016. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.</p>
+</div>
+<div id="ref-_ranimation_2019">
+<p>王, 洪曾, 常桂松, and 孙艳蕊. 2019. “R语言animation包的辅助教学探索.” <em>中国校外教育</em>, no. 14: 110+139. <a href="http://kns.cnki.net/KCMS/detail/detail.aspx?dbcode=CJFQ&amp;dbname=CJFDLAST2019&amp;filename=XWLL201914077&amp;v=MTgzMjdTN0RoMVQzcVRyV00xRnJDVVJMT2ZiK2R0RnlEa1ZydkJQVHJIWXJHNEg5ak5xNDlDWTRSOGVYMUx1eFk=">http://kns.cnki.net/KCMS/detail/detail.aspx?dbcode=CJFQ&amp;dbname=CJFDLAST2019&amp;filename=XWLL201914077&amp;v=MTgzMjdTN0RoMVQzcVRyV00xRnJDVVJMT2ZiK2R0RnlEa1ZydkJQVHJIWXJHNEg5ak5xNDlDWTRSOGVYMUx1eFk=</a>.</p>
+</div>
+<div id="ref-xie_2016">
+<p>谢益辉. 2019. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://bookdown.org/yihui/bookdown/citations.html#fn7">https://bookdown.org/yihui/bookdown/citations.html#fn7</a>.</p>
+</div>
+</div>
+
+
+  <footer>
+  
+<nav class="post-nav">
+  <span class="nav-prev">&larr; <a href="/post/2019/08/10/bookdown-explorer/">bookdown一个小问题和解决过程</a></span>
+  <span class="nav-next"></span>
+</nav>
+
+
+
+
+
+<script src="//yihui.name/js/math-code.js"></script>
+<script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script async src="//yihui.name/js/center-img.js"></script>
+
+  
+
+  
+  <hr>
+  <div class="copyright">&copy; <a href="https://ecology.wang">Wang</a> 2019 | <a href="https://github.com/ecowang">Github</a></div>
+  
+  </footer>
+  </article>
+  
+  </body>
+</html>
+
