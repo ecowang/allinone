@@ -6,10 +6,40 @@
     <description>Recent content in Posts on 生态学习</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 12 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 03 Sep 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>呼呼的就到九月了</title>
+      <link>/post/2019/09/03/it-is-sep-now-2019-09-03/</link>
+      <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2019/09/03/it-is-sep-now-2019-09-03/</guid>
+      <description>8月计划学完几章Modern statistics for mordern biology，不过进展惨淡。一是因为难，当然难也反映了笨；二是出差、吃饭等事务，造成点干扰——还是没定力。
+现在9月了，在没人知道的地方立个flag——这个月学完前5章，到聚类。
+这本书，就是人家大学暑期学校十几天的教学内容，没到难的离谱的程度；就算有些没接触过得新领域，也只需要作为背景知识理解，正好一并了解下。
+除此之外，还要隔三差五晨跑、中午健身，保持积极健康的生活。
+以此希望九月，口说无凭，立此为据。</description>
+    </item>
+    
+    <item>
+      <title>难的东西不一定有用，不过简单的一定没用</title>
+      <link>/post/2019/08/16/try-something-harder-2019-08-16/</link>
+      <pubDate>Fri, 16 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2019/08/16/try-something-harder-2019-08-16/</guid>
+      <description>人到四十，中年危机也属于寻常；危机体现在各个方面，职业、家庭、社会关系等等，说不定什么时候就感觉——真他妈失败啊……
+没别的好办法，只能用积极对抗消极，用努力对抗虚无，用参与对抗疏离，多输出、多记录、多对做的事情赋予意义和感情。
+过程肯定是有难度，也难有立竿见影的效果，要保持耐心和定力。
+可以慢一点、但不要停。找一个可以量化完成的目标，只要有意义，不管有没有效益，都去努力完成它。完成一件事本身就是对自己的回馈。
+可能在自己找事的过程中，可能会有以下感觉：
+ 再做也不过在吃专业人员的渣渣。 没有充分利用好自己的平台， 我太难了，我压力很大 何苦呢，又不是过不下去。 搞了这么久，还是原地打转。 根本没用，也没人关注。 别人搞的那啥也挺不错哟。 非常投入的时候，被一些事务性的工作打断。 记性不好，重要的东西放不到脑子里，介入感少。  然后就去刷微信微博抖音了，感觉确实很舒缓。
+刷一会就回来吧。在衣食无忧的前提下，人的自我实现和社会认可是刚需。要实现对自我的认知和预期，必须选条路走下去，这条路可能走不通，不过必须走。只有走完了，才知道通不通，才能让腿脚活泛开，才能让人知道，你是在走的。当老了回首往事，才不会因为碌碌无为而太遗憾失落。
+精彩是需要努力的。
+努力本身就挺精彩。</description>
+    </item>
     
     <item>
       <title>在blogdown/bookdown作品中引用参考文献</title>
