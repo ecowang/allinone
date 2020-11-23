@@ -1,0 +1,22 @@
+---
+title: test
+author: 老王
+date: '2020-11-25'
+slug: test
+categories:
+  - R
+tags:
+  - R
+---
+
+## 试一下
+
+
+```r
+plot(1:10)
+```
+
+<img src="/post/2020-11-25-test_files/figure-html/unnamed-chunk-1-1.png" width="672" />
+
+## 再试一下
+

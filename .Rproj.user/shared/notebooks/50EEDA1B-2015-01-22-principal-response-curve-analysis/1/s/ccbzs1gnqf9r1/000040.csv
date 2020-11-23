@@ -1,3 +1,0 @@
-"0","cihuai = read.table (file=file.path(""data for analysis"", ""PRC analysis data.txt""),  header = T, sep=""\t"", fileEncoding=""UTF-16"")"
-"0",""
-"0","head(cihuai)"
