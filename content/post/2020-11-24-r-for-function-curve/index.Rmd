@@ -1,0 +1,16 @@
+---
+title: 使用R语言示意函数曲线
+author: 老王
+date: '2020-11-24'
+slug: R-for-function-curve
+categories:
+  - R
+tags:
+  - 激娃
+---
+
+```{r}
+plot(1:11)
+```
+
+先试一下。
