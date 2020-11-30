@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Forest Management on 生态学习</title>
@@ -17,10 +17,10 @@
       <pubDate>Sat, 23 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>/post/2017/09/23/r-for-elm/</guid>
-      <description>1. 数据初步整理使用白榆生长数据。指标分别有：品系号、生长地点、环境盐碱度（低中高三种）、树高、胸径、东西冠幅、南北冠幅，为2017年测定。
+      <description>1. 数据初步整理 使用白榆生长数据。指标分别有：品系号、生长地点、环境盐碱度（低中高三种）、树高、胸径、东西冠幅、南北冠幅，为2017年测定。
 在excel里整理数据，导出为csv格式，存在R工作目录下，进行操作。如果在windows下，使用read.csv 即可，但苹果中需要另外一种形式。
-后来发现是自己忘了加引号了。。。
-all.data = read.table(&amp;quot;data for analysis/all.data.demo.txt&amp;quot;, header = T, sep=&amp;quot;\t&amp;quot;, fileEncoding=&amp;quot;UTF-16&amp;quot;)head(all.data)## X spe high dbh ew sn loca salt## 1 1 58 5.04 6.2 2.12 2.90 河口 低## 2 2 58 4.85 6.0 1.86 2.05 河口 低## 3 3 58 4.83 6.3 2.18 2.42 河口 低## 4 4 58 5.25 8.0 3.20 3.11 河口 低## 5 5 58 5.</description>
+ 后来发现是自己忘了加引号了。。。
+ all.data = read.table(&amp;quot;data for analysis/all.data.demo.txt&amp;quot;, header = T, sep=&amp;quot;\t&amp;quot;, fileEncoding=&amp;quot;UTF-16&amp;quot;) head(all.data) ## X spe high dbh ew sn loca salt ## 1 1 58 5.04 6.2 2.12 2.90 河口 低 ## 2 2 58 4.85 6.0 1.86 2.05 河口 低 ## 3 3 58 4.83 6.3 2.18 2.42 河口 低 ## 4 4 58 5.25 8.0 3.20 3.11 河口 低 ## 5 5 58 5.</description>
     </item>
     
     <item>
@@ -30,9 +30,9 @@
       
       <guid>/post/2015/01/22/principal-response-curve-analysis/</guid>
       <description>说起来，主响应曲线分析已经帮了自己2次了。一次是发表了一篇SCI论文，即Using microbial community functioning as the complementary environmental condition indicator，用来分析了BIOLOG数据，另一次就是在窄冠刺槐的课题中用了这种方法，增强了点科技感。搜了搜似乎网上还没有针对生态学分析中利用这种方法的中文的介绍，这里简单写一下，当作自己网站的第一篇原创文章。
-一、分析目标针对多元数据，且在一个时间段内有连续的记录，分析在这个过程中有整体什么差异，且能展现这些差异是由哪些指标主要引起的。这么说有点抽象，举个例子吧。比如有6个不同刺槐品种，从种下来开始，就测量胸径、树高、郁闭度、枝下高等指标，每年测量，一直测量了10年。不同品种肯定有差异，但这些差异在这10年里是怎么变化的呢？当然我可以单独拿出一个指标来，比如胸径，比较十年的变化，但这种比较不具有整体性。为了从整体上把不同品种的生长特征在这10年间的变化刻画出来，就可以使用PRC方法。它其实是一种基于降维的方法，在刻画出每个时间节点的主要特征后，在时间序列上表现出来。出处是Principal Response Curves: Analysis of Time-dependent Multivariate Responses of a Biological Community to Stress.van den Brink, P. J. &amp;amp; ter Braak, C. J. F. (1999)。
-二、数据准备数据准备，行为case，列为variable。即行是测定对象，列是指标。
-cihuai = read.table (file=file.path(&amp;quot;data for analysis&amp;quot;, &amp;quot;PRC analysis data.txt&amp;quot;), header = T, sep=&amp;quot;\t&amp;quot;, fileEncoding=&amp;quot;UTF-16&amp;quot;)# 注意这种选择文件相对路径的方法。chuck中的工作目录和console中的工作目录不同。head(cihuai)## X dens hight DBH Crown UBhigh Closure## 1 c1-1-1 833 1.</description>
+一、分析目标 针对多元数据，且在一个时间段内有连续的记录，分析在这个过程中有整体什么差异，且能展现这些差异是由哪些指标主要引起的。 这么说有点抽象，举个例子吧。比如有6个不同刺槐品种，从种下来开始，就测量胸径、树高、郁闭度、枝下高等指标，每年测量，一直测量了10年。不同品种肯定有差异，但这些差异在这10年里是怎么变化的呢？当然我可以单独拿出一个指标来，比如胸径，比较十年的变化，但这种比较不具有整体性。为了从整体上把不同品种的生长特征在这10年间的变化刻画出来，就可以使用PRC方法。它其实是一种基于降维的方法，在刻画出每个时间节点的主要特征后，在时间序列上表现出来。出处是Principal Response Curves: Analysis of Time-dependent Multivariate Responses of a Biological Community to Stress.van den Brink, P. J. &amp;amp; ter Braak, C. J. F. (1999)。
+ 二、数据准备 数据准备，行为case，列为variable。即行是测定对象，列是指标。
+cihuai = read.table (file=file.path(&amp;quot;data for analysis&amp;quot;, &amp;quot;PRC analysis data.txt&amp;quot;), header = T, sep=&amp;quot;\t&amp;quot;, fileEncoding=&amp;quot;UTF-16&amp;quot;) # 注意这种选择文件相对路径的方法。chuck中的工作目录和console中的工作目录不同。 head(cihuai) ## X dens hight DBH Crown UBhigh Closure ## 1 c1-1-1 833 1.</description>
     </item>
     
   </channel>

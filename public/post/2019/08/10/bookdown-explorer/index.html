@@ -82,23 +82,32 @@
 
 
 <p>想按<a href="https://bookdown.org/yihui/bookdown/">bookdown</a>把一些记录做成书的样子。</p>
+
 <p>按最简单能实现的途径，先下载bookdown的<a href="https://github.com/rstudio/bookdown-demo">demo</a>，修改成自己的内容，本地serve没有问题。</p>
+
 <p>按<a href="https://cerebralmastication.com/about/">JD Long</a>（这好像是个大神）的自动在Netlify发布书的<a href="https://cerebralmastication.com/2019/05/11/publishing-bookdown-to-netlify-automagically/">介绍</a>，把书push到Github上，关联Netlify——失败。</p>
+
 <p>原因是没有把一个文件夹<code>_book</code>推上去。为什么会把这个文件夹忽略呢？百思不得其解，今天终于发现，是<a href="https://yihui.name/">谢益辉</a>做这个包的时候把<code>_book</code>文件夹纳入git忽略名单了。是在隐藏文件<code>.gitignore</code>中定义的，只要在里面把这个文件夹去掉就行了。</p>
+
 <p>另外，Mac中显示和隐藏隐藏文件的方法如下：</p>
-<p>显示（在终端输入）：</p>
-<blockquote>
-<p>defaults write com.apple.finder AppleShowAllFiles -bool true</p>
-</blockquote>
+
+<p>显示（在终端输入）：
+&gt; defaults write com.apple.finder AppleShowAllFiles -bool true</p>
+
 <p>关闭显示：</p>
+
 <blockquote>
 <p>defaults write com.apple.finder AppleShowAllFiles -bool false</p>
 </blockquote>
+
 <p>命令运行之后需要重新加载Finder，快捷键：</p>
+
 <blockquote>
 <p>option+command+esc</p>
 </blockquote>
+
 <p>选中Finder，重新启动即可。</p>
+
 <p>虽然是个小问题，不过因为基础知识太少还是费了不少劲才发现解决方法，记录一下。</p>
 
 
@@ -122,7 +131,7 @@
 
   
   <hr>
-  <div class="copyright">© <a href="https://ecology.wang">Wang</a> 2019 | <a href="https://github.com/ecowang">Github</a></div>
+  <div class="copyright">&copy; <a href="https://ecology.wang">Wang</a> 2019 | <a href="https://github.com/ecowang">Github</a></div>
   
   </footer>
   </article>

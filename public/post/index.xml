@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on 生态学习</title>
@@ -6,10 +6,19 @@
     <description>Recent content in Posts on 生态学习</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 23 Nov 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 24 Nov 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>使用R语言示意函数曲线</title>
+      <link>/post/2020/11/24/r-for-function-curve/</link>
+      <pubDate>Tue, 24 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/11/24/r-for-function-curve/</guid>
+      <description>plot(1:11) 先试一下。</description>
+    </item>
     
     <item>
       <title>2020年快结束了</title>
@@ -23,20 +32,20 @@
 期间也兴致勃勃吃瓜，大家喜爱的川宝协同美国两大党派给世界献上一场场精彩的剧目，现在虽然已经接近尘埃落定快要人走茶凉，但我们不会忘记他带来的欢乐，也不会忘记他扒下的一层层美国画皮。当然，他发起的贸易战还在进行中，但中美双方都似乎好久没有提这个事儿了。反之，倒是RCEP震动全球，而我们表态对加入CPTPP持积极态度，也是在美国政府换届前下了一步先手棋，为后续的斗争增加了主动性。
 当然东山狼吃肉西山狼也吃肉，拜振华上台也没什么根本变化，只是斗争策略要做点微调而已，关键还是办好自己的事。
 这一年我自己的事办的怎么样呢？
-  疫情期间没事写篇论文，发了，和十年前的一篇遥相呼应，挺有意思。
-  单位组织进社区服务疫情防控，作用可能不大但也算跟着忙活了。
-  为疫情，生平第一次献血。
-  竣工了个项目。
-  编了本书。
-  又申请了个项目。
-  有几个月跑步，几个月练力量。断断续续，身体素质没啥明显长进，到长了十几斤秤，看来帮助消化了。
-  评职称，报了材料。
-  配合媳妇激娃。
+ 疫情期间没事写篇论文，发了，和十年前的一篇遥相呼应，挺有意思。
+ 单位组织进社区服务疫情防控，作用可能不大但也算跟着忙活了。
+ 为疫情，生平第一次献血。
+ 竣工了个项目。
+ 编了本书。
+ 又申请了个项目。
+ 有几个月跑步，几个月练力量。断断续续，身体素质没啥明显长进，到长了十几斤秤，看来帮助消化了。
+ 评职称，报了材料。
+ 配合媳妇激娃。
   还是意难平
 难得平和的心境，感觉做的事不够，效率太低，成果太少。之前说以输出为抓手，还是没做到，太多躺着刷短视频的时候了，信息不断冲刷自己的大脑，享受低级的快感，过后啥也回忆不起来，直接降低了吸收复杂系统信息的能力，也导致好几件该做完的事儿没做完。
-  世行项目课题总结报告，一年了没弄完。
-  买的一大摞书，看了个寂寞。
-  输出输出，输出了个寂寞。公众号荒废，网站基本不动，频率最高的是发朋友圈……
+ 世行项目课题总结报告，一年了没弄完。
+ 买的一大摞书，看了个寂寞。
+ 输出输出，输出了个寂寞。公众号荒废，网站基本不动，频率最高的是发朋友圈……
   想要体验一个更大的世界，不但是想，而且是需求；实际上还是蹉跎在习惯、畏惧和懒惰中。
 2020年，还剩下一个多月，做具体的事。
 要打字、要说话、要交谈、要想。</description>
@@ -48,7 +57,7 @@
       <pubDate>Wed, 15 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>/post/2020/01/15/looking-forward-to-2000/</guid>
-      <description>回首和总结2020年，工作满十年了，真快。
+      <description> 回首和总结 2020年，工作满十年了，真快。
 回首第一个十年，战略和战术上都有教训。
 战略上，没有坚持独立自主和积极作为，随着手头工作和领导意志干点浮光掠影的活，对感兴趣的东西也是三天打鱼两天晒网、东一耙子西一扫帚，积极努力不够、专注探索不够，没有在这十年间耕耘的领域留下比较深的痕迹，也没有培养出比较高的专业素养。
 战术上，对单位职务职称规则、同事交流合作了解不够。在具体事情上诉求不够清晰，与他人合作效果不够好。
@@ -59,7 +68,7 @@
 还需要进一步提高业务水平。
 其他一些杂学，比如觉得会点统计、R语言，可真深入吗？不抄代码的话，自己能提出什么问题，解决什么问题？工作十年，用这个东西干过什么正儿八经的活？发表过一篇论文吗？英语，能流利对话吗，能交流业务内容吗，还会写论文吗？都够呛。
 十有九年堪白眼，百无一用是书生。
-展望和期待书生也有很厉害的，各个领域，各个行业都有，自怨自艾别拉人家。
+ 展望和期待 书生也有很厉害的，各个领域，各个行业都有，自怨自艾别拉人家。
 年初嘛，自我批判之余畅想一下未来。
 畅想未来的作用，和希望把工作交给别人干，成果自己享的心理差不多。只不过是把活儿交给未来的自己，然后现在的自己意淫一下成果的到来。
 希望将来的自己能够义薄云天的把事儿扛起来，不推脱、不抱怨、不犹疑。
@@ -75,7 +84,7 @@
 当然作为人有自己的主动性，但也别太为难，精神毕竟都是要基于物质的。
 时时当勉励，随心行与止。
 以一颗复杂而感恩的心，迎接工作后新十年的到来。
-</description>
+ </description>
     </item>
     
     <item>
@@ -84,15 +93,15 @@
       <pubDate>Fri, 27 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>/post/2019/09/27/meaningless-2019-09-27/</guid>
-      <description>九月二十七日，周六过后，上班两天，就到十月了。本月完成5章的读书计划没有完成。
+      <description> 九月二十七日，周六过后，上班两天，就到十月了。本月完成5章的读书计划没有完成。
 原因也能找出几条来，各种庆祝活动排练、项目检查之类……说到底还是心性不定，能力不足——笨呐。
 另外学的过程，意义感不足。不知道是因为难呢，还是确实没有用到地方，没有关注。
 放着慢慢磨吧。
 本文记录一下如何从世行数据库中获取数据、分析数据。
-需要的包WDI包，如何使用在YouTube上有个视频。
+需要的包 WDI包，如何使用在YouTube上有个视频。
 世行数据库的能用的指数都可以在这里找，这些指标是与数据库中对应的。
 to be continued…
-</description>
+ </description>
     </item>
     
     <item>
@@ -119,7 +128,7 @@ to be continued…
 过程肯定是有难度，也难有立竿见影的效果，要保持耐心和定力。
 可以慢一点、但不要停。找一个可以量化完成的目标，只要有意义，不管有没有效益，都去努力完成它。完成一件事本身就是对自己的回馈。
 可能在自己找事的过程中，可能会有以下感觉：
-再做也不过在吃专业人员的渣渣。没有充分利用好自己的平台，我太难了，我压力很大何苦呢，又不是过不下去。搞了这么久，还是原地打转。根本没用，也没人关注。别人搞的那啥也挺不错哟。非常投入的时候，被一些事务性的工作打断。记性不好，重要的东西放不到脑子里，介入感少。然后就去刷微信微博抖音了，感觉确实很舒缓。
+ 再做也不过在吃专业人员的渣渣。 没有充分利用好自己的平台， 我太难了，我压力很大 何苦呢，又不是过不下去。 搞了这么久，还是原地打转。 根本没用，也没人关注。 别人搞的那啥也挺不错哟。 非常投入的时候，被一些事务性的工作打断。 记性不好，重要的东西放不到脑子里，介入感少。  然后就去刷微信微博抖音了，感觉确实很舒缓。
 刷一会就回来吧。在衣食无忧的前提下，人的自我实现和社会认可是刚需。要实现对自我的认知和预期，必须选条路走下去，这条路可能走不通，不过必须走。只有走完了，才知道通不通，才能让腿脚活泛开，才能让人知道，你是在走的。当老了回首往事，才不会因为碌碌无为而太遗憾失落。
 精彩是需要努力的。
 努力本身就挺精彩。</description>
@@ -133,8 +142,8 @@ to be continued…
       <guid>/post/2019/08/12/blogdown-reference/</guid>
       <description>本文记录如何在blogdown或bookdown作品中添加参考文献。参考了bookdown的官方文献 (谢益辉 2019)。Rstudio也有参考。
 具体做法：
-准备好参考文献文件。此处从zotero中把参考文献导出来，生成.bib 文件，这里命名为reference.bib。并放到 content\post\文件夹.Figure 1: 从zotero中导出bib文件在博客源文档 .Rmd 文档的 yml 头里声明 .bib 文件的名称。注意：md文件不行，只能在Rmd中使用。Figure 2: yml头信息示例在文章中引用 .bib 里的文献条目，例如 [@R-base]显示为：(R Core Team 2016)，没括号的@R-base显示为 R Core Team (2016)。但中文的显示似乎有点问题，[@_ranimation_2019]成了(王, 常, and 孙 2019)。Figure 3: bib文件里面的内容，就是一个文本文件运行，在参考文献列表在底部出现。还有两点：
-在blog中文献没有超链接，在book里是有的。大概谢益辉觉得博客不会很长，加超链接没必要。可以有多个bib文件，使用的话在yml头里声明即可，如：bibliography: [book.bib, packages.bib]。R Core Team. 2016. R: A Language and Environment for Statistical Computing. Vienna, Austria: R Foundation for Statistical Computing.</description>
+准备好参考文献文件。此处从zotero中把参考文献导出来，生成.bib 文件，这里命名为reference.bib。并放到 content\post\文件夹.  Figure 1: 从zotero中导出bib文件  在博客源文档 .Rmd 文档的 yml 头里声明 .bib 文件的名称。注意：md文件不行，只能在Rmd中使用。  Figure 2: yml头信息示例  在文章中引用 .bib 里的文献条目，例如 [@R-base]显示为：(R Core Team 2016)，没括号的@R-base显示为 R Core Team (2016)。但中文的显示似乎有点问题，[@_ranimation_2019]成了(王, 常, and 孙 2019)。  Figure 3: bib文件里面的内容，就是一个文本文件  运行，在参考文献列表在底部出现。  还有两点：
+ 在blog中文献没有超链接，在book里是有的。大概谢益辉觉得博客不会很长，加超链接没必要。 可以有多个bib文件，使用的话在yml头里声明即可，如：bibliography: [book.bib, packages.bib]。  R Core Team. 2016. R: A Language and Environment for Statistical Computing. Vienna, Austria: R Foundation for Statistical Computing.</description>
     </item>
     
     <item>
@@ -148,9 +157,8 @@ to be continued…
 按JD Long（这好像是个大神）的自动在Netlify发布书的介绍，把书push到Github上，关联Netlify——失败。
 原因是没有把一个文件夹_book推上去。为什么会把这个文件夹忽略呢？百思不得其解，今天终于发现，是谢益辉做这个包的时候把_book文件夹纳入git忽略名单了。是在隐藏文件.gitignore中定义的，只要在里面把这个文件夹去掉就行了。
 另外，Mac中显示和隐藏隐藏文件的方法如下：
-显示（在终端输入）：
- defaults write com.apple.finder AppleShowAllFiles -bool true
- 关闭显示：
+显示（在终端输入）： &amp;gt; defaults write com.apple.finder AppleShowAllFiles -bool true
+关闭显示：
  defaults write com.apple.finder AppleShowAllFiles -bool false
  命令运行之后需要重新加载Finder，快捷键：
  option+command+esc
@@ -183,15 +191,15 @@ to be continued…
       <description>记录使用blogdown，Github，netlify等材料，建立一个博客网站的过程。
 按环节分为三部分，
 使用Rstudio，blogdown，在本地建立网站。
-把网站丢到Github上，用Netlify生成网站。
-配置网址。
-1. 使用Rstudio，blogdown，在本地建立网站这一步的目的，是把网站搭建出来，能在本地访问。
+ 把网站丢到Github上，用Netlify生成网站。
+ 配置网址。
+  1. 使用Rstudio，blogdown，在本地建立网站 这一步的目的，是把网站搭建出来，能在本地访问。
 要做的博客站点是静态网站，做出来就是若干文件夹，和文件，这一步使用R语言下的一个包——blogdown来实现。
 首先下载安装R和 Rstudio，两个网站界面如下。
-Figure 1: R 官方网站Figure 2: Rstudio 官方网站下载安装后，界面分别是这样的：
-Figure 3: R程序界面（装上Rstudio后这个就不用打开了）Figure 4: Rstudio程序界面程序装上以后，安装blogdown包。
-Figure 5: 可以在这里安装Figure 6: 搜索需要的包，自动安装依赖包然后在File-&amp;gt;New Project中，新建Project，选网站，过程如下。
-Figure 7: 新建一个ProjectFigure 8: 给网站所在文件夹命名Figure 9: 新建一个网站Figure 10: 给网站命名Figure 11: 网站在本地（本电脑上）生成了默认打开的是网站的配置文件，网站个人信息有些在这里修改。</description>
+ Figure 1: R 官方网站   Figure 2: Rstudio 官方网站  下载安装后，界面分别是这样的：
+ Figure 3: R程序界面（装上Rstudio后这个就不用打开了）   Figure 4: Rstudio程序界面  程序装上以后，安装blogdown包。
+ Figure 5: 可以在这里安装   Figure 6: 搜索需要的包，自动安装依赖包  然后在File-&amp;gt;New Project中，新建Project，选网站，过程如下。
+ Figure 7: 新建一个Project   Figure 8: 给网站所在文件夹命名   Figure 9: 新建一个网站   Figure 10: 给网站命名   Figure 11: 网站在本地（本电脑上）生成了  默认打开的是网站的配置文件，网站个人信息有些在这里修改。</description>
     </item>
     
     <item>
@@ -200,10 +208,10 @@ to be continued…
       <pubDate>Sat, 23 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>/post/2017/09/23/r-for-elm/</guid>
-      <description>1. 数据初步整理使用白榆生长数据。指标分别有：品系号、生长地点、环境盐碱度（低中高三种）、树高、胸径、东西冠幅、南北冠幅，为2017年测定。
+      <description>1. 数据初步整理 使用白榆生长数据。指标分别有：品系号、生长地点、环境盐碱度（低中高三种）、树高、胸径、东西冠幅、南北冠幅，为2017年测定。
 在excel里整理数据，导出为csv格式，存在R工作目录下，进行操作。如果在windows下，使用read.csv 即可，但苹果中需要另外一种形式。
-后来发现是自己忘了加引号了。。。
-all.data = read.table(&amp;quot;data for analysis/all.data.demo.txt&amp;quot;, header = T, sep=&amp;quot;\t&amp;quot;, fileEncoding=&amp;quot;UTF-16&amp;quot;)head(all.data)## X spe high dbh ew sn loca salt## 1 1 58 5.04 6.2 2.12 2.90 河口 低## 2 2 58 4.85 6.0 1.86 2.05 河口 低## 3 3 58 4.83 6.3 2.18 2.42 河口 低## 4 4 58 5.25 8.0 3.20 3.11 河口 低## 5 5 58 5.</description>
+ 后来发现是自己忘了加引号了。。。
+ all.data = read.table(&amp;quot;data for analysis/all.data.demo.txt&amp;quot;, header = T, sep=&amp;quot;\t&amp;quot;, fileEncoding=&amp;quot;UTF-16&amp;quot;) head(all.data) ## X spe high dbh ew sn loca salt ## 1 1 58 5.04 6.2 2.12 2.90 河口 低 ## 2 2 58 4.85 6.0 1.86 2.05 河口 低 ## 3 3 58 4.83 6.3 2.18 2.42 河口 低 ## 4 4 58 5.25 8.0 3.20 3.11 河口 低 ## 5 5 58 5.</description>
     </item>
     
     <item>
@@ -255,13 +263,14 @@ git 六脉神剑(目前就用过这几个囧)
 在项目实施之前，关键节点有如下几个：
 一是国际金融组织贷款规划（省财政厅申请，财政部决定是否列入）。
  第十四条 拟利用国际金融组织贷款的地方应当由省、自治区、直辖市、计划单列市财政部门以及新疆生产建设兵团财务局（以下简称省级财政部门）代表本级政府向财政部提交贷款申请书。
-  。。。凡债务由地方承担的，还应当附送省级财政部门出具的还款承诺函。
-  第十五条 财政部应当对贷款申请书进行审查，并根据本办法第四条、第五条的规定以及贷款方的要求等决定是否将贷款申请列入国际金融组织贷款规划。
+。。。凡债务由地方承担的，还应当附送省级财政部门出具的还款承诺函。
+第十五条 财政部应当对贷款申请书进行审查，并根据本办法第四条、第五条的规定以及贷款方的要求等决定是否将贷款申请列入国际金融组织贷款规划。
  二是组织评审（省财政厅组织评估中心进行）。
  第十六条 省级财政部门对已列入国际金融组织贷款规划的有关项目应当组织评审，并向财政部提交评审意见书。财政部根据评审意见书决定是否安排对外磋商谈判。
  三是办理转贷（省财政厅申请，财政部批准）。
  第十九条 省级财政部门应当就评审后符合要求的、拟利用外国政府贷款的项目向财政部提出申请，并提交以下材料：。。。
-  第二十条 财政部对省级财政部门提交的外国政府贷款申请材料予以审核确认后，应当根据贷款方的发展援助政策要求以及资金承诺情况，统一对外提出备选项目。</description>
+第二十条 财政部对省级财政部门提交的外国政府贷款申请材料予以审核确认后，应当根据贷款方的发展援助政策要求以及资金承诺情况，统一对外提出备选项目。
+第二十二条 财政部负责就符合条件的贷款项目与国际金融组织或者外国政府等进行贷款磋商谈判、组织签署贷款法律文件并办理生效事宜。其他部门应当协助财政部做好相关工作。</description>
     </item>
     
     <item>
@@ -271,9 +280,9 @@ git 六脉神剑(目前就用过这几个囧)
       
       <guid>/post/2015/01/22/principal-response-curve-analysis/</guid>
       <description>说起来，主响应曲线分析已经帮了自己2次了。一次是发表了一篇SCI论文，即Using microbial community functioning as the complementary environmental condition indicator，用来分析了BIOLOG数据，另一次就是在窄冠刺槐的课题中用了这种方法，增强了点科技感。搜了搜似乎网上还没有针对生态学分析中利用这种方法的中文的介绍，这里简单写一下，当作自己网站的第一篇原创文章。
-一、分析目标针对多元数据，且在一个时间段内有连续的记录，分析在这个过程中有整体什么差异，且能展现这些差异是由哪些指标主要引起的。这么说有点抽象，举个例子吧。比如有6个不同刺槐品种，从种下来开始，就测量胸径、树高、郁闭度、枝下高等指标，每年测量，一直测量了10年。不同品种肯定有差异，但这些差异在这10年里是怎么变化的呢？当然我可以单独拿出一个指标来，比如胸径，比较十年的变化，但这种比较不具有整体性。为了从整体上把不同品种的生长特征在这10年间的变化刻画出来，就可以使用PRC方法。它其实是一种基于降维的方法，在刻画出每个时间节点的主要特征后，在时间序列上表现出来。出处是Principal Response Curves: Analysis of Time-dependent Multivariate Responses of a Biological Community to Stress.van den Brink, P. J. &amp;amp; ter Braak, C. J. F. (1999)。
-二、数据准备数据准备，行为case，列为variable。即行是测定对象，列是指标。
-cihuai = read.table (file=file.path(&amp;quot;data for analysis&amp;quot;, &amp;quot;PRC analysis data.txt&amp;quot;), header = T, sep=&amp;quot;\t&amp;quot;, fileEncoding=&amp;quot;UTF-16&amp;quot;)# 注意这种选择文件相对路径的方法。chuck中的工作目录和console中的工作目录不同。head(cihuai)## X dens hight DBH Crown UBhigh Closure## 1 c1-1-1 833 1.</description>
+一、分析目标 针对多元数据，且在一个时间段内有连续的记录，分析在这个过程中有整体什么差异，且能展现这些差异是由哪些指标主要引起的。 这么说有点抽象，举个例子吧。比如有6个不同刺槐品种，从种下来开始，就测量胸径、树高、郁闭度、枝下高等指标，每年测量，一直测量了10年。不同品种肯定有差异，但这些差异在这10年里是怎么变化的呢？当然我可以单独拿出一个指标来，比如胸径，比较十年的变化，但这种比较不具有整体性。为了从整体上把不同品种的生长特征在这10年间的变化刻画出来，就可以使用PRC方法。它其实是一种基于降维的方法，在刻画出每个时间节点的主要特征后，在时间序列上表现出来。出处是Principal Response Curves: Analysis of Time-dependent Multivariate Responses of a Biological Community to Stress.van den Brink, P. J. &amp;amp; ter Braak, C. J. F. (1999)。
+ 二、数据准备 数据准备，行为case，列为variable。即行是测定对象，列是指标。
+cihuai = read.table (file=file.path(&amp;quot;data for analysis&amp;quot;, &amp;quot;PRC analysis data.txt&amp;quot;), header = T, sep=&amp;quot;\t&amp;quot;, fileEncoding=&amp;quot;UTF-16&amp;quot;) # 注意这种选择文件相对路径的方法。chuck中的工作目录和console中的工作目录不同。 head(cihuai) ## X dens hight DBH Crown UBhigh Closure ## 1 c1-1-1 833 1.</description>
     </item>
     
   </channel>

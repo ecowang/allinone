@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>bookdown on 生态学习</title>
@@ -22,9 +22,8 @@
 按JD Long（这好像是个大神）的自动在Netlify发布书的介绍，把书push到Github上，关联Netlify——失败。
 原因是没有把一个文件夹_book推上去。为什么会把这个文件夹忽略呢？百思不得其解，今天终于发现，是谢益辉做这个包的时候把_book文件夹纳入git忽略名单了。是在隐藏文件.gitignore中定义的，只要在里面把这个文件夹去掉就行了。
 另外，Mac中显示和隐藏隐藏文件的方法如下：
-显示（在终端输入）：
- defaults write com.apple.finder AppleShowAllFiles -bool true
- 关闭显示：
+显示（在终端输入）： &amp;gt; defaults write com.apple.finder AppleShowAllFiles -bool true
+关闭显示：
  defaults write com.apple.finder AppleShowAllFiles -bool false
  命令运行之后需要重新加载Finder，快捷键：
  option+command+esc

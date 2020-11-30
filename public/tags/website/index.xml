@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>website on 生态学习</title>
@@ -22,9 +22,8 @@
 按JD Long（这好像是个大神）的自动在Netlify发布书的介绍，把书push到Github上，关联Netlify——失败。
 原因是没有把一个文件夹_book推上去。为什么会把这个文件夹忽略呢？百思不得其解，今天终于发现，是谢益辉做这个包的时候把_book文件夹纳入git忽略名单了。是在隐藏文件.gitignore中定义的，只要在里面把这个文件夹去掉就行了。
 另外，Mac中显示和隐藏隐藏文件的方法如下：
-显示（在终端输入）：
- defaults write com.apple.finder AppleShowAllFiles -bool true
- 关闭显示：
+显示（在终端输入）： &amp;gt; defaults write com.apple.finder AppleShowAllFiles -bool true
+关闭显示：
  defaults write com.apple.finder AppleShowAllFiles -bool false
  命令运行之后需要重新加载Finder，快捷键：
  option+command+esc
@@ -41,15 +40,15 @@
       <description>记录使用blogdown，Github，netlify等材料，建立一个博客网站的过程。
 按环节分为三部分，
 使用Rstudio，blogdown，在本地建立网站。
-把网站丢到Github上，用Netlify生成网站。
-配置网址。
-1. 使用Rstudio，blogdown，在本地建立网站这一步的目的，是把网站搭建出来，能在本地访问。
+ 把网站丢到Github上，用Netlify生成网站。
+ 配置网址。
+  1. 使用Rstudio，blogdown，在本地建立网站 这一步的目的，是把网站搭建出来，能在本地访问。
 要做的博客站点是静态网站，做出来就是若干文件夹，和文件，这一步使用R语言下的一个包——blogdown来实现。
 首先下载安装R和 Rstudio，两个网站界面如下。
-Figure 1: R 官方网站Figure 2: Rstudio 官方网站下载安装后，界面分别是这样的：
-Figure 3: R程序界面（装上Rstudio后这个就不用打开了）Figure 4: Rstudio程序界面程序装上以后，安装blogdown包。
-Figure 5: 可以在这里安装Figure 6: 搜索需要的包，自动安装依赖包然后在File-&amp;gt;New Project中，新建Project，选网站，过程如下。
-Figure 7: 新建一个ProjectFigure 8: 给网站所在文件夹命名Figure 9: 新建一个网站Figure 10: 给网站命名Figure 11: 网站在本地（本电脑上）生成了默认打开的是网站的配置文件，网站个人信息有些在这里修改。</description>
+ Figure 1: R 官方网站   Figure 2: Rstudio 官方网站  下载安装后，界面分别是这样的：
+ Figure 3: R程序界面（装上Rstudio后这个就不用打开了）   Figure 4: Rstudio程序界面  程序装上以后，安装blogdown包。
+ Figure 5: 可以在这里安装   Figure 6: 搜索需要的包，自动安装依赖包  然后在File-&amp;gt;New Project中，新建Project，选网站，过程如下。
+ Figure 7: 新建一个Project   Figure 8: 给网站所在文件夹命名   Figure 9: 新建一个网站   Figure 10: 给网站命名   Figure 11: 网站在本地（本电脑上）生成了  默认打开的是网站的配置文件，网站个人信息有些在这里修改。</description>
     </item>
     
     <item>
