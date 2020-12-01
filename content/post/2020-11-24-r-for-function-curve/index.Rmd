@@ -1,5 +1,5 @@
 ---
-title: 使用R语言示意函数曲线
+title: 使用R语言示意初中函数曲线
 author: 老王
 date: '2020-11-24'
 slug: R-for-function-curve
@@ -9,8 +9,24 @@ tags:
   - 激娃
 ---
 
+进入初中，孩儿要学一些关于函数的东西，这里用R语言进行一些演示，希望能够帮助孩子理解。
+
+## 坐标系中表示点 
+
 ```{r}
-plot(1:11)
+x = 1:10
+y = 1:10
+plot(x,y) 
 ```
 
-先试一下。 
+
+```{r}
+lx <- seq(1, 5, length = 41)
+yl <- expression(e^{-frac(1,2) * {log[10](x)}^2})
+y <- exp(-.5*lx^2)
+op <- par(mfrow = c(2,1), mar = par("mar")-c(1,0,2,0), mgp = c(2, .7, 0))
+plot(10^lx, y, log = "xy", type = "l", col = "purple",
+     main = "Log-Log plot", ylab = yl, xlab = "x")
+```
+ 
+ 

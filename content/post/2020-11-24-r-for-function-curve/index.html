@@ -1,5 +1,5 @@
 ---
-title: 使用R语言示意函数曲线
+title: 使用R语言示意初中函数曲线
 author: 老王
 date: '2020-11-24'
 slug: R-for-function-curve
@@ -9,8 +9,22 @@ tags:
   - 激娃
 ---
 
+<link href="index_files/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="index_files/anchor-sections/anchor-sections.js"></script>
 
 
-<pre class="r"><code>plot(1:11)</code></pre>
-<p><img src="/post/2020-11-24-r-for-function-curve/index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
-<p>先试一下。</p>
+<p>进入初中，孩儿要学一些关于函数的东西，这里用R语言进行一些演示，希望能够帮助孩子理解。</p>
+<div id="坐标系中表示点" class="section level2">
+<h2>坐标系中表示点</h2>
+<pre class="r"><code>x = 1:10
+y = 1:10
+plot(x,y) </code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<pre class="r"><code>lx &lt;- seq(1, 5, length = 41)
+yl &lt;- expression(e^{-frac(1,2) * {log[10](x)}^2})
+y &lt;- exp(-.5*lx^2)
+op &lt;- par(mfrow = c(2,1), mar = par(&quot;mar&quot;)-c(1,0,2,0), mgp = c(2, .7, 0))
+plot(10^lx, y, log = &quot;xy&quot;, type = &quot;l&quot;, col = &quot;purple&quot;,
+     main = &quot;Log-Log plot&quot;, ylab = yl, xlab = &quot;x&quot;)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
