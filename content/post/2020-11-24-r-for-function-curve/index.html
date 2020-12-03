@@ -14,17 +14,93 @@ tags:
 
 
 <p>进入初中，孩儿要学一些关于函数的东西，这里用R语言进行一些演示，希望能够帮助孩子理解。</p>
-<div id="坐标系中表示点" class="section level2">
-<h2>坐标系中表示点</h2>
-<pre class="r"><code>x = 1:10
-y = 1:10
-plot(x,y) </code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
-<pre class="r"><code>lx &lt;- seq(1, 5, length = 41)
-yl &lt;- expression(e^{-frac(1,2) * {log[10](x)}^2})
-y &lt;- exp(-.5*lx^2)
-op &lt;- par(mfrow = c(2,1), mar = par(&quot;mar&quot;)-c(1,0,2,0), mgp = c(2, .7, 0))
-plot(10^lx, y, log = &quot;xy&quot;, type = &quot;l&quot;, col = &quot;purple&quot;,
-     main = &quot;Log-Log plot&quot;, ylab = yl, xlab = &quot;x&quot;)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<div id="简单的数学计算" class="section level2">
+<h2>简单的数学计算</h2>
+<div id="加减乘除--" class="section level3">
+<h3>加减乘除：+ - * /</h3>
+<pre class="r"><code>1+1; 4-2; 3*5; 9/2</code></pre>
+<pre><code>## [1] 2</code></pre>
+<pre><code>## [1] 2</code></pre>
+<pre><code>## [1] 15</code></pre>
+<pre><code>## [1] 4.5</code></pre>
+</div>
+<div id="绝对值abs整除余数" class="section level3">
+<h3>绝对值abs()、整除%/%、余数%%</h3>
+<pre class="r"><code>abs(5*(-10)); 25%/%3; 25%%3</code></pre>
+<pre><code>## [1] 50</code></pre>
+<pre><code>## [1] 8</code></pre>
+<pre><code>## [1] 1</code></pre>
+</div>
+<div id="n次方幂-n-开平方-sqrt开n次方1n" class="section level3">
+<h3>n次方(幂) ^n、 开平方 sqrt()、开n次方^(1/n)</h3>
+<pre class="r"><code>2^3 # 2的3次方</code></pre>
+<pre><code>## [1] 8</code></pre>
+<pre class="r"><code>sqrt(9) # 9开平方</code></pre>
+<pre><code>## [1] 3</code></pre>
+<pre class="r"><code>8^(1/3) # 8开3次方</code></pre>
+<pre><code>## [1] 2</code></pre>
+</div>
+</div>
+<div id="赋值给对象" class="section level2">
+<h2>赋值给对象</h2>
+<p>像解应用题要设未知数x一样，在编程的过程中也会指定一些未知数，用来赋值，以及随着计算而变化。不同的是，这里的未知数，可以是一个数，也可以是一串数，也可以是一组数。</p>
+<pre class="r"><code>x = 3 #这是把x这个对象，赋值为3
+x</code></pre>
+<pre><code>## [1] 3</code></pre>
+<pre class="r"><code>x = x+1 # x增加了1，变成了4
+x</code></pre>
+<pre><code>## [1] 4</code></pre>
+<pre class="r"><code>y = 1:10 # 把y这个对象赋值为1到10，这10个数，一串
+y</code></pre>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<pre class="r"><code>y = y+1 #这一串数每一个都加1，变成了2到11.
+y</code></pre>
+<pre><code>##  [1]  2  3  4  5  6  7  8  9 10 11</code></pre>
+<p>对象也可以用对象来赋值</p>
+<pre class="r"><code>y = x #则y被赋予之前x的值，即4，成了一个数了
+y</code></pre>
+<pre><code>## [1] 4</code></pre>
+</div>
+<div id="在坐标系中表示数值" class="section level2">
+<h2>在坐标系中表示数值</h2>
+<p>看下面的代码</p>
+<pre class="r"><code>y = seq(1, 10, 2) # seq函数产生序列，三个参数分别为从哪里开始，到哪里结束，以多大幅度
+
+plot(y)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>可以看到在在图中出现5个点，横坐标为“第几个数”，可见共5个；纵坐标为y的值，即1、3、5、7、9。还可以基于这几个点连上线。</p>
+<pre class="r"><code>plot(y)
+lines(1:5, y,col=&#39;red&#39;)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>这是一个简单的点线作图，实际工作中会遇到各种各样的数据，也会做各种各样的图，不断有新的图被创造出来用以表达信息，在掌握一定基础后，还要保持开放的心态随时学习。</p>
+<div id="函数" class="section level3">
+<h3>函数</h3>
+<div id="一次函数" class="section level4">
+<h4>一次函数</h4>
+<p>首先学的是一次函数。如<code>y = 3x +2</code>。函数要用<code>function()</code>函数来定义。</p>
+<pre class="r"><code>yicihanshu = function(x) 3*x + 2 # 这就定义了一个函数，能够代入具体x求值，如代入x=3，结果应该是11.
+
+yicihanshu(3)</code></pre>
+<pre><code>## [1] 11</code></pre>
+<p>所以在作图时候利用这个性质，在我们想观察函数值的地方取一串x,代入函数中，就可以得到对应的一串y，再把这些y连起来，就得到了函数曲线。</p>
+<pre class="r"><code>x = seq(-10, 10, 1) # x取从-10到10的整数，即-10、-9、-8……8、9、10.
+y = yicihanshu(x) # 分别求得对应的y值
+
+plot(x,y) # 可以看到这些点
+lines(x,y, col=&quot;red&quot;) # 连上线
+abline(h = 0, v = 0, col = &quot;blue&quot;) # 添加坐标轴位置，便于观察</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>#### 二次函数</p>
+<p>二次函数和一次函数原理类似，如<code>y = 2*x^2 - 10</code>。</p>
+<pre class="r"><code>x = seq(-10, 10, 1)
+ercihanshu = function(x) 2*x^2 -10
+y = ercihanshu(x)
+plot(x,y)
+lines(x,y, col = &quot;red&quot;)
+abline(h = 0, v = 0, col = &quot;blue&quot;) </code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>由此，可以更为直观了解函数曲线的由来。通过x的加减变化，y的加减变化，可以理解曲线的左右移动和上下移动。通过调整参数，对二次函数的曲线胖瘦形状变化也能有更直观了解。</p>
+<p>本篇就这样吧。</p>
+</div>
+</div>
 </div>
